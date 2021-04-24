@@ -17,6 +17,7 @@ namespace player
         private void Awake()
         {
             _rigidbody2D.velocity = transform.forward * _speed;
+            DontDestroyOnLoad(gameObject);
         }
 
         private void OnJump()
