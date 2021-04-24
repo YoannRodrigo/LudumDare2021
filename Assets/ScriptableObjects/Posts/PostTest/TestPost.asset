@@ -16,7 +16,7 @@ MonoBehaviour:
   Username: FJFJF
   Content:
     Text: "BONJROFJBfk\t\nfehnfkajn\tz\nzezeg"
-    Image: {fileID: 0}
+    Image: {fileID: 21300000, guid: 44a054df1702e39458b7072b08d0f212, type: 3}
     model3D: {fileID: 100000, guid: 68a66fb5a71f8204a8dcb613c97d1fa8, type: 3}
   ReactionAmount: 18
   Comments:

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 namespace post
 {
@@ -16,6 +17,8 @@ namespace post
         [SerializeField] private TextMeshProUGUI _textContent;
         [SerializeField] private TextMeshProUGUI _reactions;
         [SerializeField] private GameObject _model3D;
+        [SerializeField] private SceneReference _modelViewerScene;
+        [SerializeField] private GameObject _blackBackground;
 
         private void Awake()
         {
@@ -28,7 +31,7 @@ namespace post
             _date.text = infos.Date;
             FillTextContent(infos.Content.Text);
             FillImageContent(infos.Content.Image);
-            FillModel3DContent(infos.Content.model3D);
+            //FillModel3DContent(infos.Content.model3D);
             _reactions.text = infos.ReactionAmount.ToString();
         }
 
@@ -62,13 +65,30 @@ namespace post
         {
             if (model3D != null)
             {
-                _model3D = Instantiate(model3D);
-                _model3D.SetActive(true);
+                AsyncOperation operation = SceneManager.LoadSceneAsync(_modelViewerScene, LoadSceneMode.Additive);
+                operation.completed += (op) => ModelViewer.Instance.DisplayModel(model3D);
             }
             else
             {
                 _model3D.SetActive(false);
             }
+        }
+        public void OpenModelViewer()
+        {
+            if (_infos.Content.model3D != null)
+            {
+                AsyncOperation operation = SceneManager.LoadSceneAsync(_modelViewerScene, LoadSceneMode.Additive);
+                operation.completed += (op) =>
+                {
+                    ModelViewer.Instance.DisplayModel(_infos.Content.model3D);
+                    _blackBackground.SetActive(true);
+                };
+            }
+        }
+        public void CloseViewer()
+        {
+            _blackBackground.SetActive(false);
+            ModelViewer.Instance.CloseViewer();
         }
     }
 }
