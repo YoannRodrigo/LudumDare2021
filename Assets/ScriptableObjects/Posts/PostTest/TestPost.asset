@@ -12,14 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b15a2c0fd1cde264fb93070a420a9930, type: 3}
   m_Name: TestPost
   m_EditorClassIdentifier: 
-  Avatar: {fileID: 0}
-  Username: 
+  Avatar: {fileID: 21300000, guid: 75beb9724e91ffb43b204e9e0b147a16, type: 3}
+  Username: FJFJF
   Content:
-    Text: 'eee
-
-'
+    Text: "BONJROFJBfk\t\nfehnfkajn\tz\nzezeg"
     Image: {fileID: 0}
-    model3D: {fileID: 0}
-  ReactionAmount: 0
+    model3D: {fileID: 100000, guid: 68a66fb5a71f8204a8dcb613c97d1fa8, type: 3}
+  ReactionAmount: 18
   Comments:
   - {fileID: 11400000, guid: 5fcebb4f1eb786643b66e5bdddb9acca, type: 2}
+  Date: 22/07/19

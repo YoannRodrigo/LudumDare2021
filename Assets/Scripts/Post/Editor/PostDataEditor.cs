@@ -9,6 +9,7 @@ namespace post
     public class PostDataEditor : Editor
     {
         private SerializedProperty _username;
+        private SerializedProperty _date;
         private SerializedProperty _avatar;
         private SerializedProperty _content;
         private SerializedProperty _reactionAmount;
@@ -21,13 +22,15 @@ namespace post
             _content = serializedObject.FindProperty("Content");
             _reactionAmount = serializedObject.FindProperty("ReactionAmount");
             _comments = serializedObject.FindProperty("Comments");
+            _date = serializedObject.FindProperty("Date");
 
         }
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
-            EditorGUILayout.PropertyField(_username, new GUIContent("Username"));
             EditorGUILayout.PropertyField(_avatar, new GUIContent("Avatar"));
+            EditorGUILayout.PropertyField(_username, new GUIContent("Username"));
+            EditorGUILayout.PropertyField(_date, new GUIContent("Date"));
             EditorGUILayout.PropertyField(_content, new GUIContent("Content"));
             EditorGUILayout.PropertyField(_reactionAmount, new GUIContent("Reactions"));
             EditorGUILayout.PropertyField(_comments, new GUIContent("Comments"));

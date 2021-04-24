@@ -12,5 +12,6 @@ namespace post
         [SerializeField] public ContentData Content;
         [SerializeField] public int ReactionAmount;
         [SerializeField] public PostData[] Comments;
+        [SerializeField] public string Date;
     }
 }
