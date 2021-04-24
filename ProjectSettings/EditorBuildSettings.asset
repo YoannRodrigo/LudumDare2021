@@ -6,18 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Yoann.unity
+    guid: 4fa5284d87521a44ca0a9cab248f4183
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: d1c3109bdb54ad54c8a2b2838528e640
-  - enabled: 1
-    path: Assets/Scenes/CYRIL2.unity
+  - enabled: 0
+    path: Assets/Scenes/CYRIL/CYRIL2.unity
     guid: b62a9ad765c8fff41b5b4a7d89c4ec00
-  - enabled: 1
-    path: Assets/Scenes/CYRIL.unity
+  - enabled: 0
+    path: Assets/Scenes/CYRIL/CYRIL.unity
     guid: f73528006041a4248989aafb014e7eb2
-  - enabled: 1
-    path: Assets/Scenes/CYRIL-3.unity
+  - enabled: 0
+    path: Assets/Scenes/CYRIL/CYRIL-3.unity
     guid: 97694968e72db9e44bf2ae1fe958c489
-  - enabled: 1
-    path: Assets/Scenes/CYRIL-Menu.unity
+  - enabled: 0
+    path: Assets/Scenes/CYRIL/CYRIL-Menu.unity
     guid: 1bf0512c1126bba43947d1d1c3c37650
   m_configObjects: {}
