@@ -54,6 +54,66 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "WebSite",
+            "id": "e492d05f-5ebc-4738-9349-fab487dcb8b4",
+            "actions": [
+                {
+                    "name": "Scroll",
+                    "type": "Value",
+                    "id": "1308321d-7f79-407b-96e9-fe98c364c49b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "cbe27d17-ce6e-4a7e-a5e7-1b6514cc3ab5",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Scroll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "1eb5998d-76e2-4872-a70b-39d495d6d74e",
+                    "path": "1DAxis(minValue=-60,maxValue=60)",
+                    "interactions": "",
+                    "processors": "Scale(factor=60)",
+                    "groups": "",
+                    "action": "Scroll",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "58835c07-6a2f-4333-9ce9-93786769de5c",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Scroll",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "5ee1ed55-aece-4ece-aa16-7c5fe2585d4b",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Scroll",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
         }
     ],
     "controlSchemes": []
