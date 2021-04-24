@@ -663,7 +663,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1440809961}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e71ccacdc03f66f40bebbbae8a0bd2a4, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e0336a223c65124fb75737dc0b972ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _playerTransform: {fileID: 1473423576}
@@ -881,10 +881,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scene:
     sceneAsset: {fileID: 102900000, guid: f73528006041a4248989aafb014e7eb2, type: 3}
-    scenePath: Assets/Scenes/CYRIL.unity
+    scenePath: Assets/Scenes/CYRIL/CYRIL.unity
   _nextLevel:
     sceneAsset: {fileID: 102900000, guid: b62a9ad765c8fff41b5b4a7d89c4ec00, type: 3}
-    scenePath: Assets/Scenes/CYRIL2.unity
+    scenePath: Assets/Scenes/CYRIL/CYRIL2.unity
   _levelCamera: {fileID: 0}
 --- !u!1 &1731294710
 GameObject:

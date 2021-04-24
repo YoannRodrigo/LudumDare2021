@@ -6,6 +6,7 @@ namespace player
 {
     public class Movement : MonoBehaviour
     {
+        public static Movement Instance;
         [SerializeField] private Rigidbody2D _rigidbody2D;
         [SerializeField] private Collider2D _collider2D;
 
@@ -17,6 +18,12 @@ namespace player
         private void Awake()
         {
             _rigidbody2D.velocity = transform.forward * _speed;
+            if (Instance != null && Instance != this)
+            {
+                Destroy(gameObject);
+                return;
+            }
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
 

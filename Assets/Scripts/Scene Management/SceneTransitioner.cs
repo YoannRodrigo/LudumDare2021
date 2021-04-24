@@ -34,7 +34,7 @@ namespace levelManagement
 
             if (_currentLevel.NextLevel.ScenePath == "")
             {
-                LoadNextScene(_mainMenu);
+                LoadMainMenu();
                 return;
             }
             else
@@ -42,18 +42,22 @@ namespace levelManagement
                 _currentLevel = _nextLevel;
                 if (_currentLevel.NextLevel.ScenePath == "")
                 {
-                    Debug.Log("eeee");
                     return;
                 }
                 LoadNextLevel(_currentLevel.NextLevel);
             }
         }
 
-        public void LoadNextLevel(SceneReference sceneToload)
+        public void CloseScene(SceneReference sceneToClose)
         {
-            AsyncOperation operation = LoadScene(sceneToload);
-            operation.completed += (asyncOperation) => _nextLevel = GetLevelInScene(sceneToload);
+            AsyncOperation operation = SceneManager.UnloadSceneAsync(sceneToClose);
         }
+
+        private void LoadMainMenu()
+        {
+            LoadNextScene(_mainMenu, () => DeletePersistentGameObject());
+        }
+
         private void LoadNextScene(SceneReference sceneToload, Action actionOnLoad = null)
         {
             AsyncOperation operation = LoadScene(sceneToload);
@@ -62,6 +66,12 @@ namespace levelManagement
                 return;
             }
             operation.completed += (ope) => actionOnLoad();
+        }
+
+        public void LoadNextLevel(SceneReference sceneToload)
+        {
+            AsyncOperation operation = LoadScene(sceneToload);
+            operation.completed += (asyncOperation) => _nextLevel = GetLevelInScene(sceneToload);
         }
 
         private AsyncOperation LoadScene(SceneReference sceneReference)
@@ -102,10 +112,12 @@ namespace levelManagement
             return null;
         }
 
-        public void CloseScene(SceneReference sceneToClose)
+        private void DeletePersistentGameObject()
         {
-            AsyncOperation operation = SceneManager.UnloadSceneAsync(sceneToClose);
+            Destroy(PersistentCamera.Instance.gameObject);
+            Destroy(Movement.Instance.gameObject);
         }
+
     }
 }
 

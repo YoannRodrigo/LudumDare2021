@@ -5,11 +5,13 @@ using Cinemachine;
 
 namespace camera
 {
-    public class CameraSwitcher : MonoBehaviour
+    public class PersistentCamera : MonoBehaviour
     {
-        public static CameraSwitcher Instance;
+        public static PersistentCamera Instance;
         [SerializeField] private Transform _playerTransform;
         [SerializeField] private CinemachineVirtualCamera _cameraInUse;
+
+        public Transform PlayerTransform { get => _playerTransform; set => _playerTransform = value; }
 
         private void Awake()
         {
