@@ -67,6 +67,7 @@ public class SoundManager : MonoBehaviour
             AudioSource currentAudioSource = currentAudio.AddComponent<AudioSource>();
             currentAudioSource.clip = audioClip;
             currentAudioSource.playOnAwake = false;
+            currentAudio.transform.parent = transform;
             _allSFXs.Add(currentAudio.name, currentAudio);
         }
     }
