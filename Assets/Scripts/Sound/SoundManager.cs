@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -30,6 +31,11 @@ public class SoundManager : MonoBehaviour
             PreLoadMusic();
             PreLoadSFX();
         }
+    }
+
+    private void Start()
+    {
+        PlayMusic("Main");
     }
 
     private void Update()
@@ -101,9 +107,7 @@ public class SoundManager : MonoBehaviour
 
     public static void PlayMusic(string musicName)
     {
-        print(_playingMusics.Count);
         _playingMusics = PlaySound(musicName, _allMusics, _playingMusics, _mainVolume*_musicVolume, true);
-        print(_playingMusics.Count);
     }
     
     public static void PlaySFX(string sfxName)
@@ -113,9 +117,7 @@ public class SoundManager : MonoBehaviour
 
     public static void StopMusic(string musicName)
     {
-        print(_playingMusics.Count);
         _playingMusics= StopSound(musicName, _allMusics, _playingMusics);
-        print(_playingMusics.Count);
     }
 
     public static void StopSFX(string sfxName)
