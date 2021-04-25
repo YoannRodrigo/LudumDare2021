@@ -23,8 +23,13 @@ public class WebSiteManager : MonoBehaviour
 
     [SerializeField] private TupleTabWebSite mainSite;
     [SerializeField] private List<TupleTabWebSite> otherSites;
-    [SerializeField] private Scrollbar scrollbar;
-    
+    [SerializeField] private Sprite activeTab;
+    [SerializeField] private Sprite inactiveTab;
+    [SerializeField] private ScrollBarController scrollBarController;
+
+    private readonly Vector2 activeSize = new Vector2(500, 50);
+    private readonly Vector2 inactiveSize = new Vector2(250, 40);
+
     private int lastId;
     private GameObject currentWebSite;
     private Tweener tween;
@@ -32,8 +37,7 @@ public class WebSiteManager : MonoBehaviour
     private void Start()
     {
         currentWebSite = mainSite.website;
-        UpdateScrollBar();
-        UpdateScrollBarPosition();
+        scrollBarController.OnTabChanges(currentWebSite);
     }
 
     public void ActivateWebSiteTab(string name)
@@ -50,43 +54,51 @@ public class WebSiteManager : MonoBehaviour
     {
         if (id != lastId)
         {
-            if(lastId!=0)
-            {
-                FindTuple((lastId)).website.SetActive(false);
-            }
-            else
-            {
-                mainSite.website.SetActive(false);
-            }
-            if (id == 0)
-            {
-                mainSite.website.SetActive(true);
-                currentWebSite = mainSite.website;
-            }
-            else
-            {
-                FindTuple(id).website.SetActive(true);
-                currentWebSite = FindTuple(id).website;
-            }
-            UpdateScrollBar();
-            UpdateScrollBarPosition();
+            
+            DisableTab();
+            ActivateTab(id);
+            scrollBarController.OnTabChanges(currentWebSite);
             lastId = id;
+            UpdateTabPosition();
         }
     }
 
-    private void UpdateScrollBar()
+    private void DisableTab()
     {
-        float webSiteHeight = currentWebSite.GetComponent<RectTransform>().rect.height;
-        scrollbar.size = Mathf.Clamp(-webSiteHeight/5400f+1.2f, 0.2f, 1);
+        TupleTabWebSite lastTuple;
+        if(lastId!=0)
+        {
+            lastTuple = FindTuple(lastId);
+                
+        }
+        else
+        {
+            lastTuple = mainSite;
+        }
+        lastTuple.tab.GetComponent<Button>().image.sprite = inactiveTab;
+        lastTuple.tab.GetComponent<RectTransform>().sizeDelta = inactiveSize;
+        lastTuple.website.SetActive(false);
     }
 
-    private void UpdateScrollBarPosition()
+    private void ActivateTab(int id)
     {
-        float webSiteHeight = currentWebSite.GetComponent<RectTransform>().rect.height;
-        float maxHeight = webSiteHeight / 2f;
-        scrollbar.value = currentWebSite.transform.localPosition.y / webSiteHeight + 1f / 2f;
+        TupleTabWebSite currentTuple;
+        if (id == 0)
+        {
+            currentTuple = mainSite;
+                
+        }
+        else
+        {
+            currentTuple = FindTuple(id);
+                
+        }
+        currentTuple.tab.GetComponent<Button>().image.sprite = activeTab;
+        currentTuple.tab.GetComponent<RectTransform>().sizeDelta = activeSize;
+        currentTuple.website.SetActive(true);
+        currentWebSite = currentTuple.website;
     }
-
+    
     private TupleTabWebSite FindTuple(string name)
     {
         return otherSites.Find(tupleSite => tupleSite.name.Contains(name));
@@ -96,28 +108,15 @@ public class WebSiteManager : MonoBehaviour
     {
         return otherSites.Find(tupleSite => tupleSite.id == id);
     }
-
-    public void OnScrollBar(float values)
-    {
-        if (tween == null || !tween.IsActive() || tween.IsComplete())
-        {
-            float webSiteHeight = currentWebSite.GetComponent<RectTransform>().rect.height;
-            float cameraViewHeight = GameObject.FindWithTag("MainCamera").GetComponent<Camera>().pixelHeight;
-            float targetValue = Mathf.Clamp((webSiteHeight - cameraViewHeight) * values - (webSiteHeight - cameraViewHeight) / 2f, -(webSiteHeight - cameraViewHeight) / 2f,
-                (webSiteHeight - cameraViewHeight) / 2f);
-            Vector3 targetPosition = new Vector3(currentWebSite.transform.localPosition.x, targetValue, currentWebSite.transform.localPosition.z);
-            currentWebSite.transform.localPosition = targetPosition;
-        }
-    }
     
-    private void OnWebsiteScroll(InputValue inputValue)
+    /*private void OnScroll(InputValue inputValue)
     {
         float scrollValue = inputValue.Get<float>();
         if(scrollValue != 0)
         {
             float webSiteHeight = currentWebSite.GetComponent<RectTransform>().rect.height;
             float cameraViewHeight = GameObject.FindWithTag("MainCamera").GetComponent<Camera>().pixelHeight;
-            float targetValue = Mathf.Clamp(currentWebSite.transform.localPosition.y + scrollValue,-(webSiteHeight - cameraViewHeight)/2f, (webSiteHeight - cameraViewHeight)/2f);
+            float targetValue = Mathf.Clamp(currentWebSite.transform.localPosition.y - scrollValue,cameraViewHeight/2f, webSiteHeight - cameraViewHeight/2f);
             Vector3 targetPosition = new Vector3(currentWebSite.transform.localPosition.x, targetValue ,currentWebSite.transform.localPosition.z);
             if (tween == null || !tween.IsActive() || tween.IsComplete())
             {
@@ -128,13 +127,44 @@ public class WebSiteManager : MonoBehaviour
                 tween.ChangeEndValue(targetPosition, 0.8f, true).SetEase(Ease.OutSine);
             }
         }
-    }
+    }*/
 
-    private void Update()
+    private void UpdateTabPosition()
     {
-        if (tween != null && tween.IsActive() && !tween.IsComplete())
+        Vector3 tabPosition = otherSites[0].tab.GetComponent<RectTransform>().position;
+        if (lastId == 0)
         {
-           UpdateScrollBarPosition();
+            otherSites[0].tab.GetComponent<RectTransform>().position = new Vector3(mainSite.tab.GetComponent<RectTransform>().position.x + 635,tabPosition.y,tabPosition.z);
+        }
+        else
+        {
+            if (lastId == 1)
+            {
+                otherSites[0].tab.GetComponent<RectTransform>().position = new Vector3(mainSite.tab.GetComponent<RectTransform>().position.x + 510,tabPosition.y,tabPosition.z);
+            }
+            else
+            {
+                otherSites[0].tab.GetComponent<RectTransform>().position = new Vector3(mainSite.tab.GetComponent<RectTransform>().position.x + 385,tabPosition.y,tabPosition.z);
+            }
+        }
+        for(int i = 1; i <otherSites.Count; i++)
+        {
+            tabPosition = otherSites[i].tab.GetComponent<RectTransform>().position;
+            if (lastId == i)
+            {
+                otherSites[i].tab.GetComponent<RectTransform>().position = new Vector3(otherSites[i-1].tab.GetComponent<RectTransform>().position.x + 385,tabPosition.y,tabPosition.z);
+            }
+            else
+            {
+                if (lastId == i + 1)
+                {
+                    otherSites[i].tab.GetComponent<RectTransform>().position = new Vector3(otherSites[i - 1].tab.GetComponent<RectTransform>().position.x + 385, tabPosition.y, tabPosition.z);
+                }
+                else
+                {
+                    otherSites[i].tab.GetComponent<RectTransform>().position = new Vector3(otherSites[i - 1].tab.GetComponent<RectTransform>().position.x + 260, tabPosition.y, tabPosition.z);
+                }
+            }
         }
     }
 }
