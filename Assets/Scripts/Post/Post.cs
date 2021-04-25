@@ -15,9 +15,8 @@ namespace post
         [SerializeField] private TextMeshProUGUI _username;
         [SerializeField] private TextMeshProUGUI _date;
         [SerializeField] private TextMeshProUGUI _textContent;
-        [SerializeField] private GameObject _model3D;
         [SerializeField] private SceneReference _modelViewerScene;
-        [SerializeField] private GameObject _blackBackground;
+        [SerializeField] private BlackBackground _blackBackground;
         [SerializeField] private PostReaction _reactions;
 
         private void Awake()
@@ -28,6 +27,7 @@ namespace post
         {
             _infos = infos;
             _username.text = infos.Username;
+            _avatar.sprite = infos.Avatar;
             _date.text = infos.Date;
             FillTextContent(infos.Content.Text);
             FillImageContent(infos.Content.Image);
@@ -67,10 +67,6 @@ namespace post
                 AsyncOperation operation = SceneManager.LoadSceneAsync(_modelViewerScene, LoadSceneMode.Additive);
                 operation.completed += (op) => ModelViewer.Instance.DisplayModel(model3D);
             }
-            else
-            {
-                _model3D.SetActive(false);
-            }
         }
         public void OpenModelViewer()
         {
@@ -80,13 +76,13 @@ namespace post
                 operation.completed += (op) =>
                 {
                     ModelViewer.Instance.DisplayModel(_infos.Content.model3D);
-                    _blackBackground.SetActive(true);
+                    _blackBackground.OpenBackground(() => ModelViewer.Instance.CloseViewer());
                 };
             }
         }
         public void CloseViewer()
         {
-            _blackBackground.SetActive(false);
+            _blackBackground.CloseBackground();
             ModelViewer.Instance.CloseViewer();
         }
 

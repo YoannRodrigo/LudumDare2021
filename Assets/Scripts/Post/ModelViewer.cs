@@ -46,7 +46,7 @@ public class ModelViewer : MonoBehaviour
         }
         Vector2 delta = value.Get<Vector2>();
         Vector3 newRotation = new Vector3(delta.y,-delta.x);
-        newRotation.x *= 20 * Time.deltaTime;
+        newRotation *= 20 * Time.deltaTime;
         _modelDisplayed.transform.Rotate(newRotation,Space.World);
     }
 }
