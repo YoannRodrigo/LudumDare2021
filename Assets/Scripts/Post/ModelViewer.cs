@@ -10,6 +10,7 @@ public class ModelViewer : MonoBehaviour
     [SerializeField] private SceneReference _scene;
     [SerializeField] private Transform _holder;
     [SerializeField] private float _zoomAmount;
+    [SerializeField] private float _movementFactor;
     private GameObject _modelDisplayed;
     private bool _isPressed = false;
     private void Awake()
@@ -47,7 +48,7 @@ public class ModelViewer : MonoBehaviour
         }
         Vector2 delta = value.Get<Vector2>();
         Vector3 newRotation = new Vector3(delta.y, -delta.x);
-        newRotation *= 20 * Time.deltaTime;
+        newRotation *= _movementFactor * Time.deltaTime;
         _modelDisplayed.transform.Rotate(newRotation, Space.World);
     }
 
