@@ -13,4 +13,8 @@ MonoBehaviour:
   m_Name: Main1
   m_EditorClassIdentifier: 
   idSequence: 1
-  hintsTexts: []
+  websiteID: 0
+  hintsTexts:
+  - Hint 1
+  - Hint 2
+  - Hint 3
