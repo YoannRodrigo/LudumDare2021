@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b15a2c0fd1cde264fb93070a420a9930, type: 3}
   m_Name: Cursed
   m_EditorClassIdentifier: 
-  Avatar: {fileID: 21300000, guid: 48a8d375467c35246b634962e1bd8ed2, type: 3}
+  Avatar: {fileID: 21300000, guid: 046a545492530084e830fa8ef7697863, type: 3}
   Username: FJFJF
   Content:
     Text: Fully charged phone at 66%, 66 minutes left, 66 differents outcomes. I'm
