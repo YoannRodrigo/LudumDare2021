@@ -15,10 +15,10 @@ namespace post
         [SerializeField] private TextMeshProUGUI _username;
         [SerializeField] private TextMeshProUGUI _date;
         [SerializeField] private TextMeshProUGUI _textContent;
-        [SerializeField] private TextMeshProUGUI _reactions;
         [SerializeField] private GameObject _model3D;
         [SerializeField] private SceneReference _modelViewerScene;
         [SerializeField] private GameObject _blackBackground;
+        [SerializeField] private PostReaction _reactions;
 
         private void Awake()
         {
@@ -31,8 +31,7 @@ namespace post
             _date.text = infos.Date;
             FillTextContent(infos.Content.Text);
             FillImageContent(infos.Content.Image);
-            //FillModel3DContent(infos.Content.model3D);
-            _reactions.text = infos.ReactionAmount.ToString();
+            _reactions.SetReaction(_infos.HasPlayerReacted, _infos.ReactionAmount);
         }
 
         private void FillTextContent(string text)
@@ -89,6 +88,13 @@ namespace post
         {
             _blackBackground.SetActive(false);
             ModelViewer.Instance.CloseViewer();
+        }
+
+        public void ReactToPost()
+        {
+            _infos.HasPlayerReacted = !_infos.HasPlayerReacted;
+            _infos.ReactionAmount = _infos.HasPlayerReacted ? _infos.ReactionAmount + 1 : _infos.ReactionAmount - 1;
+            _reactions.SetReaction(_infos.HasPlayerReacted, _infos.ReactionAmount);
         }
     }
 }

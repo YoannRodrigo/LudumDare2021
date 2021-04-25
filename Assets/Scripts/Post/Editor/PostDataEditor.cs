@@ -13,6 +13,7 @@ namespace post
         private SerializedProperty _avatar;
         private SerializedProperty _content;
         private SerializedProperty _reactionAmount;
+        private SerializedProperty _hasReacted;
         private SerializedProperty _comments;
 
         private void OnEnable()
@@ -23,6 +24,7 @@ namespace post
             _reactionAmount = serializedObject.FindProperty("ReactionAmount");
             _comments = serializedObject.FindProperty("Comments");
             _date = serializedObject.FindProperty("Date");
+            _hasReacted = serializedObject.FindProperty("HasPlayerReacted");
 
         }
         public override void OnInspectorGUI()
@@ -33,6 +35,7 @@ namespace post
             EditorGUILayout.PropertyField(_date, new GUIContent("Date"));
             EditorGUILayout.PropertyField(_content, new GUIContent("Content"));
             EditorGUILayout.PropertyField(_reactionAmount, new GUIContent("Reactions"));
+            EditorGUILayout.PropertyField(_hasReacted, new GUIContent("Has Player Reacted"));
             EditorGUILayout.PropertyField(_comments, new GUIContent("Comments"));
             DisplayComments();
             serializedObject.ApplyModifiedProperties();
