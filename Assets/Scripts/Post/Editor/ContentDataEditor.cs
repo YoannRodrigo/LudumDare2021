@@ -24,6 +24,7 @@ namespace post
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             GUIStyle style = new GUIStyle();
+            EditorStyles.textField.wordWrap = true;
             style.fontStyle = FontStyle.Bold;
             style.normal.textColor = Color.cyan;
             EditorGUI.BeginProperty(position, label , property);
