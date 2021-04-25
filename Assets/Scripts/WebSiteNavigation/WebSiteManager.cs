@@ -110,7 +110,7 @@ public class WebSiteManager : MonoBehaviour
         }
     }
     
-    private void OnScroll(InputValue inputValue)
+    private void OnWebsiteScroll(InputValue inputValue)
     {
         float scrollValue = inputValue.Get<float>();
         if(scrollValue != 0)
