@@ -7849,12 +7849,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1329609668}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9353094b0faad6440980502f45a97c9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hintManager: {fileID: 2113465328}
+  allSequence: []
 --- !u!4 &1329609670
 Transform:
   m_ObjectHideFlags: 0
@@ -13423,6 +13424,18 @@ PrefabInstance:
     - target: {fileID: 4875856105037428831, guid: a9bb83fd223541c4a8d0e052fb4e3e2e, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4875856105113801272, guid: a9bb83fd223541c4a8d0e052fb4e3e2e, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4875856105113801272, guid: a9bb83fd223541c4a8d0e052fb4e3e2e, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4875856105113801272, guid: a9bb83fd223541c4a8d0e052fb4e3e2e, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4875856105113801273, guid: a9bb83fd223541c4a8d0e052fb4e3e2e, type: 3}
       propertyPath: m_SizeDelta.x
