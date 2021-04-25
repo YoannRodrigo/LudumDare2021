@@ -632,6 +632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _infos: {fileID: 11400000, guid: 92fe6fc6fff120a478381edd1fd35073, type: 2}
+  _containerMedia: {fileID: 4875856105479603555}
   _avatar: {fileID: 4875856105113801272}
   _image: {fileID: 4875856103839081561}
   _username: {fileID: 4875856105627876034}

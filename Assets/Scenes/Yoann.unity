@@ -1256,6 +1256,10 @@ PrefabInstance:
       value: Post (1)
       objectReference: {fileID: 0}
     - target: {fileID: 4875856104005764347, guid: a9bb83fd223541c4a8d0e052fb4e3e2e, type: 3}
+      propertyPath: _infos
+      value: 
+      objectReference: {fileID: 11400000, guid: 5fcebb4f1eb786643b66e5bdddb9acca, type: 2}
+    - target: {fileID: 4875856104005764347, guid: a9bb83fd223541c4a8d0e052fb4e3e2e, type: 3}
       propertyPath: _blackBackground
       value: 
       objectReference: {fileID: 1103041775}

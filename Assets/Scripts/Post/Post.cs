@@ -10,7 +10,8 @@ namespace post
     public class Post : MonoBehaviour
     {
         [SerializeField] private PostData _infos;
-        [SerializeField] private Image _avatar;
+        [SerializeField] private GameObject _containerMedia;
+         [SerializeField] private Image _avatar;
         [SerializeField] private Image _image;
         [SerializeField] private TextMeshProUGUI _username;
         [SerializeField] private TextMeshProUGUI _date;
@@ -53,13 +54,15 @@ namespace post
 
         private void FillImageContent(Sprite image)
         {
-            if (image != null)
+            if (image != default(Sprite))
             {
                 _image.sprite = image;
                 _image.enabled = true;
+                _containerMedia.SetActive(true);
             }
             else
             {
+                _containerMedia.SetActive(false);
                 _image.enabled = false;
             }
         }
