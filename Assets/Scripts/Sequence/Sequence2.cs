@@ -74,6 +74,7 @@ public class Sequence2 : Sequence
        {
           if (isCommandEnter)
           {
+             consoleCommand.CallbackEvent.RemoveListener(CommandEnter);
              ValidateStep();
           }
        }
