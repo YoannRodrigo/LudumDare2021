@@ -349,7 +349,8 @@ MonoBehaviour:
     sceneAsset: {fileID: 102900000, guid: 84c705848e7d236448b9d80486626c36, type: 3}
     scenePath: Assets/Scenes/CYRIL/CYRIL - object viewer.unity
   _holder: {fileID: 1988157871}
-  _zoomAmount: 15
+  _zoomAmount: 50
+  _movementFactor: 40
 --- !u!4 &1988157871
 Transform:
   m_ObjectHideFlags: 0
