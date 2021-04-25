@@ -34,7 +34,7 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        PlayMusic("Main");
+        PlayMusic("Main_Theme");
     }
 
     private void Update()
