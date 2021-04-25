@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DG.Tweening;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -24,7 +25,12 @@ public class WebSiteManager : MonoBehaviour
     [SerializeField] private TupleTabWebSite mainSite;
     [SerializeField] private List<TupleTabWebSite> otherSites;
     [SerializeField] private Scrollbar scrollbar;
-    
+    [SerializeField] private Sprite activeTab;
+    [SerializeField] private Sprite inactiveTab;
+
+    private readonly Vector2 activeSize = new Vector2(500, 50);
+    private readonly Vector2 inactiveSize = new Vector2(250, 40);
+
     private int lastId;
     private GameObject currentWebSite;
     private Tweener tween;
@@ -50,28 +56,50 @@ public class WebSiteManager : MonoBehaviour
     {
         if (id != lastId)
         {
-            if(lastId!=0)
-            {
-                FindTuple((lastId)).website.SetActive(false);
-            }
-            else
-            {
-                mainSite.website.SetActive(false);
-            }
-            if (id == 0)
-            {
-                mainSite.website.SetActive(true);
-                currentWebSite = mainSite.website;
-            }
-            else
-            {
-                FindTuple(id).website.SetActive(true);
-                currentWebSite = FindTuple(id).website;
-            }
+            
+            DisableTab();
+            ActivateTab(id);
             UpdateScrollBar();
             UpdateScrollBarPosition();
             lastId = id;
+            UpdateTabPosition();
         }
+    }
+
+    private void DisableTab()
+    {
+        TupleTabWebSite lastTuple;
+        if(lastId!=0)
+        {
+            lastTuple = FindTuple(lastId);
+                
+        }
+        else
+        {
+            lastTuple = mainSite;
+        }
+        lastTuple.tab.GetComponent<Button>().image.sprite = inactiveTab;
+        lastTuple.tab.GetComponent<RectTransform>().sizeDelta = inactiveSize;
+        lastTuple.website.SetActive(false);
+    }
+
+    private void ActivateTab(int id)
+    {
+        TupleTabWebSite currentTuple;
+        if (id == 0)
+        {
+            currentTuple = mainSite;
+                
+        }
+        else
+        {
+            currentTuple = FindTuple(id);
+                
+        }
+        currentTuple.tab.GetComponent<Button>().image.sprite = activeTab;
+        currentTuple.tab.GetComponent<RectTransform>().sizeDelta = activeSize;
+        currentTuple.website.SetActive(true);
+        currentWebSite = currentTuple.website;
     }
 
     private void UpdateScrollBar()
@@ -135,6 +163,45 @@ public class WebSiteManager : MonoBehaviour
         if (tween != null && tween.IsActive() && !tween.IsComplete())
         {
            UpdateScrollBarPosition();
+        }
+    }
+
+    private void UpdateTabPosition()
+    {
+        Vector3 tabPosition = otherSites[0].tab.GetComponent<RectTransform>().position;
+        if (lastId == 0)
+        {
+            otherSites[0].tab.GetComponent<RectTransform>().position = new Vector3(mainSite.tab.GetComponent<RectTransform>().position.x + 635,tabPosition.y,tabPosition.z);
+        }
+        else
+        {
+            if (lastId == 1)
+            {
+                otherSites[0].tab.GetComponent<RectTransform>().position = new Vector3(mainSite.tab.GetComponent<RectTransform>().position.x + 510,tabPosition.y,tabPosition.z);
+            }
+            else
+            {
+                otherSites[0].tab.GetComponent<RectTransform>().position = new Vector3(mainSite.tab.GetComponent<RectTransform>().position.x + 385,tabPosition.y,tabPosition.z);
+            }
+        }
+        for(int i = 1; i <otherSites.Count; i++)
+        {
+            tabPosition = otherSites[i].tab.GetComponent<RectTransform>().position;
+            if (lastId == i)
+            {
+                otherSites[i].tab.GetComponent<RectTransform>().position = new Vector3(otherSites[i-1].tab.GetComponent<RectTransform>().position.x + 385,tabPosition.y,tabPosition.z);
+            }
+            else
+            {
+                if (lastId == i + 1)
+                {
+                    otherSites[i].tab.GetComponent<RectTransform>().position = new Vector3(otherSites[i - 1].tab.GetComponent<RectTransform>().position.x + 385, tabPosition.y, tabPosition.z);
+                }
+                else
+                {
+                    otherSites[i].tab.GetComponent<RectTransform>().position = new Vector3(otherSites[i - 1].tab.GetComponent<RectTransform>().position.x + 260, tabPosition.y, tabPosition.z);
+                }
+            }
         }
     }
 }
