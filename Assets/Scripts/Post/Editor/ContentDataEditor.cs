@@ -32,6 +32,7 @@ namespace post
             EditorGUILayout.LabelField("Content",style);
             SerializedProperty textProperty = property.FindPropertyRelative(nameof(ContentData.Text));
             textProperty.stringValue = EditorGUILayout.TextArea(textProperty.stringValue,GUILayout.ExpandHeight(true),GUILayout.MinHeight(80));
+            EditorStyles.textField.wordWrap = true;
             SerializedProperty imageProperty = property.FindPropertyRelative(nameof(ContentData.Image));
             SerializedProperty model3DProperty = property.FindPropertyRelative(nameof(ContentData.model3D));
             EditorGUILayout.PropertyField(imageProperty);

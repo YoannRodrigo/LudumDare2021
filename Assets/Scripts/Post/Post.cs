@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 namespace post
@@ -22,6 +24,20 @@ namespace post
         [SerializeField] private TextMeshProUGUI _commentsAmount;
         [SerializeField] private TextMeshProUGUI _repweetsAmount;
 
+        private bool isModelOpen;
+        private UnityEvent onFav = new UnityEvent();
+
+        public void AddListenerOnFav(UnityAction unityAction)
+        {
+            onFav.AddListener(unityAction);
+        }
+
+        public bool IsModelOpen()
+        {
+            return isModelOpen;
+        }
+
+        
         private void OnValidate()
         {
             FillPostWithInfos();
@@ -79,6 +95,7 @@ namespace post
         {
             if (_infos.Content.model3D != null)
             {
+                isModelOpen = true;
                 AsyncOperation operation = SceneManager.LoadSceneAsync(_modelViewerScene, LoadSceneMode.Additive);
                 operation.completed += (op) =>
                 {
@@ -95,6 +112,7 @@ namespace post
 
         public void ReactToPost()
         {
+            onFav.Invoke();
             _infos.HasPlayerReacted = !_infos.HasPlayerReacted;
             _infos.ReactionAmount = _infos.HasPlayerReacted ? _infos.ReactionAmount + 1 : _infos.ReactionAmount - 1;
             _reactions.SetReaction(_infos.HasPlayerReacted, _infos.ReactionAmount);

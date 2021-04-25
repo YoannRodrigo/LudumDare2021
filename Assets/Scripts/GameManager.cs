@@ -1,17 +1,22 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private HintManager hintManager;
-    private int currentSequence = 1;
+    private int currentSequenceID = 1;
     private float timeSinceLastHint;
 
+    [SerializeField] private List<Sequence> allSequence;
+    private Sequence currentSequence;
     private const float TIME_BEFORE_NEXT_HINT = 1;
 
     private void Start()
     {
-        hintManager.GetCurrentHint(currentSequence);
+        hintManager.GetCurrentHint(currentSequenceID);
+        currentSequence = allSequence[0];
+        //currentSequence.OnSequenceEnd().AddListener(OnNextSequence);
     }
 
     private void Update()
@@ -29,11 +34,17 @@ public class GameManager : MonoBehaviour
         hintManager.ShowAHint();
     }
 
-    private void OnNextSequence()
+    public void OnNextSequence()
     {
         timeSinceLastHint = 0;
-        currentSequence++;
+        currentSequence.gameObject.SetActive(false);
+        currentSequenceID++;
+        if(currentSequenceID < allSequence.Count)
+        {
+            currentSequence = allSequence[currentSequenceID];
+            currentSequence.gameObject.SetActive(true);
+        }
         hintManager.CleanHintZone();
-        hintManager.GetCurrentHint(currentSequence);
+        hintManager.GetCurrentHint(currentSequenceID);
     }
 }

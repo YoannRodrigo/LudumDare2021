@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b15a2c0fd1cde264fb93070a420a9930, type: 3}
+  m_Name: Sequence1Post2
+  m_EditorClassIdentifier: 
+  Avatar: {fileID: 0}
+  Username: Sarah
+  Content:
+    Text: '<color=#FF4949>66</color>% battery remaining, <color=#FF4949>66</color>
+      minutes left, <color=#FF4949>66</color> clients !
+
+      I''m ready for it
+      !'
+    Image: {fileID: 0}
+    model3D: {fileID: 0}
+  ReactionAmount: 9
+  CommentsAmount: 2
+  RepweetAmount: 25
+  HasPlayerReacted: 0
+  Comments: []
+  Date: 13/06 18:15
