@@ -1353,6 +1353,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 674f5963dbe18af4181854e02b4c302f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  step1:
+    buttonSequences: []
+    otherButtons: []
+    buttonPressed: 
+  step2:
+    buttonSequences: []
+    otherButtons: []
+    buttonPressed: 
+  step3:
+    buttonSequences: []
+    otherButtons: []
+    buttonPressed: 
+  step4:
+    buttonSequences: []
+    otherButtons: []
+    buttonPressed: 
+  step5:
+    buttonSequences: []
+    otherButtons: []
+    buttonPressed: 
+  step6:
+    buttonSequences: []
+    otherButtons: []
+    buttonPressed: 
 --- !u!1001 &208303526
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8882,15 +8906,15 @@ MonoBehaviour:
   hintManager: {fileID: 2113465328}
   allSequence:
   - {fileID: 185311771}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1385996081}
+  - {fileID: 584781158}
+  - {fileID: 206223905}
+  - {fileID: 153348992}
+  - {fileID: 835538034}
+  - {fileID: 175169282}
+  - {fileID: 1624288549}
+  - {fileID: 1762129810}
+  - {fileID: 205649570}
 --- !u!4 &1329609670
 Transform:
   m_ObjectHideFlags: 0
