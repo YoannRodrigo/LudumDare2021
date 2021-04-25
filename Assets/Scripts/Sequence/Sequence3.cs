@@ -1,5 +1,4 @@
 using System;
-using post;
 
 [Serializable]
 public class Sequence3 : Sequence

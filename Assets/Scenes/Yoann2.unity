@@ -364,7 +364,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &58494393
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3906,6 +3906,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a7a3945aed07b438f6d156929395be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  step1:
+    consoleCommand: {fileID: 0}
+  step2:
+    consoleCommand: {fileID: 0}
 --- !u!1 &588369086
 GameObject:
   m_ObjectHideFlags: 0
@@ -9304,6 +9308,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e955cdffc7554468c53941d3cde375, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  step1:
+    popUp: {fileID: 0}
+  step2:
+    footer: {fileID: 0}
+  step3:
+    consoleController: {fileID: 0}
+  step4:
+    consoleController: {fileID: 0}
 --- !u!1 &1404992482
 GameObject:
   m_ObjectHideFlags: 0
