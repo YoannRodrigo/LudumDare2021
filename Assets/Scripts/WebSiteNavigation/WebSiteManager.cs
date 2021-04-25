@@ -141,38 +141,38 @@ public class WebSiteManager : MonoBehaviour
 
     private void UpdateTabPosition()
     {
-        Vector3 tabPosition = otherSites[0].tab.GetComponent<RectTransform>().position;
+        Vector3 tabPosition = otherSites[0].tab.GetComponent<RectTransform>().anchoredPosition;
         if (lastId == 0)
         {
-            otherSites[0].tab.GetComponent<RectTransform>().position = new Vector3(mainSite.tab.GetComponent<RectTransform>().position.x + 635,tabPosition.y,tabPosition.z);
+            otherSites[0].tab.GetComponent<RectTransform>().anchoredPosition = new Vector2(mainSite.tab.GetComponent<RectTransform>().anchoredPosition.x + 585,tabPosition.y);
         }
         else
         {
             if (lastId == 1)
             {
-                otherSites[0].tab.GetComponent<RectTransform>().position = new Vector3(mainSite.tab.GetComponent<RectTransform>().position.x + 510,tabPosition.y,tabPosition.z);
+                otherSites[0].tab.GetComponent<RectTransform>().anchoredPosition = new Vector2(mainSite.tab.GetComponent<RectTransform>().anchoredPosition.x + 460,tabPosition.y);
             }
             else
             {
-                otherSites[0].tab.GetComponent<RectTransform>().position = new Vector3(mainSite.tab.GetComponent<RectTransform>().position.x + 385,tabPosition.y,tabPosition.z);
+                otherSites[0].tab.GetComponent<RectTransform>().anchoredPosition = new Vector2(mainSite.tab.GetComponent<RectTransform>().anchoredPosition.x + 385,tabPosition.y);
             }
         }
         for(int i = 1; i <otherSites.Count; i++)
         {
-            tabPosition = otherSites[i].tab.GetComponent<RectTransform>().position;
+            tabPosition = otherSites[i].tab.GetComponent<RectTransform>().anchoredPosition;
             if (lastId == i)
             {
-                otherSites[i].tab.GetComponent<RectTransform>().position = new Vector3(otherSites[i-1].tab.GetComponent<RectTransform>().position.x + 385,tabPosition.y,tabPosition.z);
+                otherSites[i].tab.GetComponent<RectTransform>().anchoredPosition = new Vector2(otherSites[i-1].tab.GetComponent<RectTransform>().anchoredPosition.x + 385,tabPosition.y);
             }
             else
             {
                 if (lastId == i + 1)
                 {
-                    otherSites[i].tab.GetComponent<RectTransform>().position = new Vector3(otherSites[i - 1].tab.GetComponent<RectTransform>().position.x + 385, tabPosition.y, tabPosition.z);
+                    otherSites[i].tab.GetComponent<RectTransform>().anchoredPosition = new Vector2(otherSites[i - 1].tab.GetComponent<RectTransform>().anchoredPosition.x + 385, tabPosition.y);
                 }
                 else
                 {
-                    otherSites[i].tab.GetComponent<RectTransform>().position = new Vector3(otherSites[i - 1].tab.GetComponent<RectTransform>().position.x + 260, tabPosition.y, tabPosition.z);
+                    otherSites[i].tab.GetComponent<RectTransform>().anchoredPosition = new Vector2(otherSites[i - 1].tab.GetComponent<RectTransform>().anchoredPosition.x + 260, tabPosition.y);
                 }
             }
         }
