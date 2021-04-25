@@ -39,7 +39,6 @@ public class WebSiteManager : MonoBehaviour
     {
         currentWebSite = mainSite.website;
         UpdateScrollBar();
-        UpdateScrollBarPosition();
     }
 
     public void ActivateWebSiteTab(string name)
