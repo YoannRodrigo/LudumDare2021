@@ -19,4 +19,8 @@ MonoBehaviour:
     Image: {fileID: 0}
     model3D: {fileID: 0}
   ReactionAmount: 0
+  CommentsAmount: 161
+  RepweetAmount: 109
+  HasPlayerReacted: 0
   Comments: []
+  Date: 
