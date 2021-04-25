@@ -30,9 +30,9 @@ public class ConsoleController : MonoBehaviour
 
             if(phase){
                 ConsolePanel.SetActive(phase);
-                MovementUtils.MoveX(this.gameObject, this.MovementValue, this.Duration, ActivateConsole);
+                MovementUtils.MoveX(this.gameObject.GetComponent<RectTransform>(), this.MovementValue, this.Duration, ActivateConsole);
             }else{
-                MovementUtils.MoveX(this.gameObject, -this.MovementValue, this.Duration, DeactivateConsole);
+                MovementUtils.MoveX(this.gameObject.GetComponent<RectTransform>(), -this.MovementValue, this.Duration, DeactivateConsole);
             }
         }
 

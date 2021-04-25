@@ -16,15 +16,15 @@ public class ConsoleHistory : MonoBehaviour
     public ScrollRect ConsoleScroll;
 
     public void AddMessage(string _message){
-        GameObject g = Instantiate(ConsoleLinePrefab, Vector3.zero,Quaternion.identity);
+        GameObject g = Instantiate(ConsoleLinePrefab, Vector3.zero,Quaternion.identity,ConsoleLineHolder);
         g.GetComponent<TextMeshProUGUI>().text = this.GetStringTime() + " " + this.NewLineChar + " " + _message;
 
-        if(ContentRectHolder.rect.height <= (ConsoleLineHolder.childCount * g.GetComponent<RectTransform>().rect.height)){
+        if(ContentRectHolder.rect.height <= (ConsoleLineHolder.childCount * g.GetComponent<RectTransform>().rect.height))
+        {
             ContentRectHolder.sizeDelta = new Vector2(0, ContentRectHolder.rect.height + g.GetComponent<RectTransform>().rect.height);
             ConsoleScroll.verticalNormalizedPosition = 0;
         }
 
-        g.transform.SetParent(ConsoleLineHolder);
     }
 
     private string GetStringTime(){

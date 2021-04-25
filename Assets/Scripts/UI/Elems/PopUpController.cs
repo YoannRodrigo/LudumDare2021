@@ -17,11 +17,11 @@ public class PopUpController : MonoBehaviour
 
         basePos = this.transform.position;  
 
-        MovementUtils.MoveY(this.gameObject, this.MovementValue, this.MovementDuration);
+        MovementUtils.MoveY(this.gameObject.GetComponent<RectTransform>(), this.MovementValue, this.MovementDuration);
     }
 
     public void ClickOnClose(){
-        MovementUtils.MoveY(this.gameObject, -this.MovementValue, this.MovementDuration / 1.5f, Relocate);
+        MovementUtils.MoveY(this.gameObject.GetComponent<RectTransform>(), -this.MovementValue, this.MovementDuration / 1.5f, Relocate);
     }
 
     public void Deactivate(){

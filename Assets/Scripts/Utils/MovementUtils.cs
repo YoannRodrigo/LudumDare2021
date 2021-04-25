@@ -19,4 +19,18 @@ public static class MovementUtils
             callback?.Invoke();
         });
     }
+    
+    public static void MoveY(RectTransform target, float value, float duration, Action callback = null){
+
+        target.DOAnchorPosY(target.transform.position.y + value, duration).SetEase(Ease.OutCubic).OnComplete(()=>{
+            callback?.Invoke();
+        });
+    }
+    
+    public static void MoveX(RectTransform target, float value, float duration, Action callback = null){
+
+        target.DOAnchorPosX(target.transform.position.x + value, duration).SetEase(Ease.OutCubic).OnComplete(()=>{
+            callback?.Invoke();
+        });
+    }
 }
