@@ -72,7 +72,6 @@ public class ConsoleController : MonoBehaviour
             InputField.ActivateInputField();
         }
     }
-
     private string WrapWithColorTag(Color _color, string _text){
         string s = "";
 

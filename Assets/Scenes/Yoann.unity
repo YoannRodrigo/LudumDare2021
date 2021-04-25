@@ -1247,6 +1247,10 @@ PrefabInstance:
       propertyPath: MovementValue
       value: -660
       objectReference: {fileID: 0}
+    - target: {fileID: 4182960734540001742, guid: 5bff26404bbf5174596f7396ef59acd1, type: 3}
+      propertyPath: m_CharacterLimit
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4182960734868338756, guid: 5bff26404bbf5174596f7396ef59acd1, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.0009785916
