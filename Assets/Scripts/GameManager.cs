@@ -34,10 +34,16 @@ public class GameManager : MonoBehaviour
         hintManager.ShowAHint();
     }
 
-    private void OnNextSequence()
+    public void OnNextSequence()
     {
         timeSinceLastHint = 0;
+        currentSequence.gameObject.SetActive(false);
         currentSequenceID++;
+        if(currentSequenceID < allSequence.Count)
+        {
+            currentSequence = allSequence[currentSequenceID];
+            currentSequence.gameObject.SetActive(true);
+        }
         hintManager.CleanHintZone();
         hintManager.GetCurrentHint(currentSequenceID);
     }

@@ -76,5 +76,9 @@ public class Sequence1 : Sequence
       base.Start();
    }
 
-   
+   protected override void ValidateSequence()
+   {
+      base.ValidateSequence();
+      FindObjectOfType<WebSiteManager>().ActivateWebSiteTab(1);
+   }
 }

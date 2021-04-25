@@ -32,16 +32,19 @@ public class Sequence : MonoBehaviour
     protected bool sequenceValidate;
     private Step currentStep;
     private int currentStepId;
+    protected GameManager gameManager;
 
     protected virtual void ValidateSequence()
     {
         sequenceValidate = true;
+        gameManager.OnNextSequence();
     }
     
     protected virtual void Start()
     {
         currentStep = steps[0];
         currentStep.Start();
+        gameManager = FindObjectOfType<GameManager>();
     }
     
     protected virtual void Update()
