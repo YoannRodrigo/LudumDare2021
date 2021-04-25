@@ -14,30 +14,63 @@ public class ConsoleController : MonoBehaviour
     public Color ErrorColor;
     public List<ConsoleCommand> commands = new List<ConsoleCommand>();
 
+    [Header("Console apparition")]
+    public float Duration;
+    public float MovementValue;
+    
+    [SerializeField]
+    private bool consoleLock = false;
+
 
     //Inputs
     public void OnConsole(){
-        ConsolePanel.SetActive(!ConsolePanel.activeSelf);
-        InputField.Select();
+        if(!consoleLock){
+            bool phase = !ConsolePanel.activeSelf;
+            consoleLock = true;
 
+            if(phase){
+                ConsolePanel.SetActive(phase);
+                MovementUtils.MoveX(this.gameObject, this.MovementValue, this.Duration, ActivateConsole);
+            }else{
+                MovementUtils.MoveX(this.gameObject, -this.MovementValue, this.Duration, DeactivateConsole);
+            }
+        }
+
+
+    }
+
+    public void ToggleLock(){
+        this.consoleLock = !this.consoleLock;
+    }
+
+    public void DeactivateConsole(){
+        ConsolePanel.SetActive(false);
+        ToggleLock();
+    }
+
+    public void ActivateConsole(){
+        this.ToggleLock();
+        InputField.ActivateInputField();
     }
 
     public void OnConsoleSubmit(){
         string text = InputField.text;
 
-        ConsoleCommand command = commands.Where(command => command.Command == text).FirstOrDefault();
+        if(text != ""){
+            ConsoleCommand command = commands.Where(command => command.Command == text).FirstOrDefault();
 
-        if(command){
-            ConsoleHistory.AddMessage(text);
-            ConsoleHistory.AddMessage(WrapWithColorTag(command.ResponseColor, command.Response));
-            command.CallbackEvent.Invoke();
-        }else{
-            ConsoleHistory.AddMessage(text);
-            ConsoleHistory.AddMessage(WrapWithColorTag(this.ErrorColor, this.ErrorMessage));
+            if(command){
+                ConsoleHistory.AddMessage(text);
+                ConsoleHistory.AddMessage(WrapWithColorTag(command.ResponseColor, command.Response));
+                command.CallbackEvent.Invoke();
+            }else{
+                ConsoleHistory.AddMessage(text);
+                ConsoleHistory.AddMessage(WrapWithColorTag(this.ErrorColor, this.ErrorMessage));
+            }
+
+            InputField.text = "";
+            InputField.ActivateInputField();
         }
-
-        InputField.text = "";
-        InputField.Select();
     }
 
     private string WrapWithColorTag(Color _color, string _text){

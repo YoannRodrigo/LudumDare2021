@@ -12,4 +12,11 @@ public static class MovementUtils
             callback?.Invoke();
         });
     }
+
+    public static void MoveX(GameObject target, float value, float duration, Action callback = null){
+
+        target.transform.DOMoveX(target.transform.position.x + value, duration).SetEase(Ease.OutCubic).OnComplete(()=>{
+            callback?.Invoke();
+        });
+    }
 }
