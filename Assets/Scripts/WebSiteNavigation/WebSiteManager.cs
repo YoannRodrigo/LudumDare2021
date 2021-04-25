@@ -15,7 +15,7 @@ public class WebSiteManager : MonoBehaviour
         public T1 tab;
         public T2 website;
     }
-    
+
     [Serializable]
     public class TupleTabWebSite : Tuple<GameObject, GameObject, string, int>
     {
@@ -28,6 +28,7 @@ public class WebSiteManager : MonoBehaviour
     [SerializeField] private ScrollBarController scrollBarController;
 
     public float ScrollDelay;
+    public bool HasObjectViewerOpen;
 
     private readonly Vector2 activeSize = new Vector2(500, 50);
     private readonly Vector2 inactiveSize = new Vector2(250, 40);
@@ -46,7 +47,7 @@ public class WebSiteManager : MonoBehaviour
     {
         FindTuple(name).tab.SetActive(true);
     }
-    
+
     public void ActivateWebSiteTab(int id)
     {
         FindTuple(id).tab.SetActive(true);
@@ -56,7 +57,7 @@ public class WebSiteManager : MonoBehaviour
     {
         if (id != lastId)
         {
-            
+
             DisableTab();
             ActivateTab(id);
             scrollBarController.OnTabChanges(currentWebSite);
@@ -68,10 +69,10 @@ public class WebSiteManager : MonoBehaviour
     private void DisableTab()
     {
         TupleTabWebSite lastTuple;
-        if(lastId!=0)
+        if (lastId != 0)
         {
             lastTuple = FindTuple(lastId);
-                
+
         }
         else
         {
@@ -88,41 +89,46 @@ public class WebSiteManager : MonoBehaviour
         if (id == 0)
         {
             currentTuple = mainSite;
-                
+
         }
         else
         {
             currentTuple = FindTuple(id);
-                
+
         }
         currentTuple.tab.GetComponent<Button>().image.sprite = activeTab;
         currentTuple.tab.GetComponent<RectTransform>().sizeDelta = activeSize;
         currentTuple.website.SetActive(true);
         currentWebSite = currentTuple.website;
     }
-    
+
     private TupleTabWebSite FindTuple(string name)
     {
         return otherSites.Find(tupleSite => tupleSite.name.Contains(name));
     }
-    
+
     private TupleTabWebSite FindTuple(int id)
     {
         return otherSites.Find(tupleSite => tupleSite.id == id);
     }
-    
+
     private void OnWebsiteScroll(InputValue inputValue)
     {
+        if (HasObjectViewerOpen)
+        {
+            return;
+        }
+
         float scrollValue = inputValue.Get<float>();
-        if(scrollValue != 0)
+        if (scrollValue != 0)
         {
             float webSiteHeight = currentWebSite.GetComponent<RectTransform>().rect.height;
             float cameraViewHeight = GameObject.FindWithTag("MainCamera").GetComponent<Camera>().pixelHeight;
-            float targetValue = Mathf.Clamp(currentWebSite.GetComponent<RectTransform>().anchoredPosition.y - scrollValue,0, webSiteHeight - cameraViewHeight);
-            Vector3 targetPosition = new Vector3(currentWebSite.GetComponent<RectTransform>().anchoredPosition.x, targetValue ,0);
+            float targetValue = Mathf.Clamp(currentWebSite.GetComponent<RectTransform>().anchoredPosition.y - scrollValue, 0, webSiteHeight - cameraViewHeight);
+            Vector3 targetPosition = new Vector3(currentWebSite.GetComponent<RectTransform>().anchoredPosition.x, targetValue, 0);
             if (tween == null || !tween.IsActive() || tween.IsComplete())
             {
-                tween = currentWebSite.GetComponent<RectTransform>().DOAnchorPos3D(targetPosition,0.3f).SetEase(Ease.InOutSine);
+                tween = currentWebSite.GetComponent<RectTransform>().DOAnchorPos3D(targetPosition, 0.3f).SetEase(Ease.InOutSine);
             }
             else
             {
@@ -144,25 +150,25 @@ public class WebSiteManager : MonoBehaviour
         Vector3 tabPosition = otherSites[0].tab.GetComponent<RectTransform>().anchoredPosition;
         if (lastId == 0)
         {
-            otherSites[0].tab.GetComponent<RectTransform>().anchoredPosition = new Vector2(mainSite.tab.GetComponent<RectTransform>().anchoredPosition.x + 585,tabPosition.y);
+            otherSites[0].tab.GetComponent<RectTransform>().anchoredPosition = new Vector2(mainSite.tab.GetComponent<RectTransform>().anchoredPosition.x + 585, tabPosition.y);
         }
         else
         {
             if (lastId == 1)
             {
-                otherSites[0].tab.GetComponent<RectTransform>().anchoredPosition = new Vector2(mainSite.tab.GetComponent<RectTransform>().anchoredPosition.x + 460,tabPosition.y);
+                otherSites[0].tab.GetComponent<RectTransform>().anchoredPosition = new Vector2(mainSite.tab.GetComponent<RectTransform>().anchoredPosition.x + 460, tabPosition.y);
             }
             else
             {
-                otherSites[0].tab.GetComponent<RectTransform>().anchoredPosition = new Vector2(mainSite.tab.GetComponent<RectTransform>().anchoredPosition.x + 385,tabPosition.y);
+                otherSites[0].tab.GetComponent<RectTransform>().anchoredPosition = new Vector2(mainSite.tab.GetComponent<RectTransform>().anchoredPosition.x + 385, tabPosition.y);
             }
         }
-        for(int i = 1; i <otherSites.Count; i++)
+        for (int i = 1; i < otherSites.Count; i++)
         {
             tabPosition = otherSites[i].tab.GetComponent<RectTransform>().anchoredPosition;
             if (lastId == i)
             {
-                otherSites[i].tab.GetComponent<RectTransform>().anchoredPosition = new Vector2(otherSites[i-1].tab.GetComponent<RectTransform>().anchoredPosition.x + 385,tabPosition.y);
+                otherSites[i].tab.GetComponent<RectTransform>().anchoredPosition = new Vector2(otherSites[i - 1].tab.GetComponent<RectTransform>().anchoredPosition.x + 385, tabPosition.y);
             }
             else
             {

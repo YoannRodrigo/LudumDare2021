@@ -11,6 +11,7 @@ namespace post
 {
     public class Post : MonoBehaviour
     {
+        [SerializeField] private PostFeed _feed;
         [SerializeField] private PostData _infos;
         [SerializeField] private GameObject _containerMedia;
         [SerializeField] private Image _avatar;
@@ -37,7 +38,7 @@ namespace post
             return isModelOpen;
         }
 
-        
+
         private void OnValidate()
         {
             FillPostWithInfos();
@@ -96,12 +97,7 @@ namespace post
             if (_infos.Content.model3D != null)
             {
                 isModelOpen = true;
-                AsyncOperation operation = SceneManager.LoadSceneAsync(_modelViewerScene, LoadSceneMode.Additive);
-                operation.completed += (op) =>
-                {
-                    ModelViewer.Instance.DisplayModel(_infos.Content.model3D);
-                    _blackBackground.OpenBackground(() => ModelViewer.Instance.CloseViewer());
-                };
+                _feed.OpenModelViewer(_infos.Content.model3D);
             }
         }
         public void CloseViewer()
