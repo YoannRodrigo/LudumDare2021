@@ -11,7 +11,7 @@ namespace post
     {
         [SerializeField] private PostData _infos;
         [SerializeField] private GameObject _containerMedia;
-         [SerializeField] private Image _avatar;
+        [SerializeField] private Image _avatar;
         [SerializeField] private Image _image;
         [SerializeField] private TextMeshProUGUI _username;
         [SerializeField] private TextMeshProUGUI _date;
@@ -22,21 +22,21 @@ namespace post
         [SerializeField] private TextMeshProUGUI _commentsAmount;
         [SerializeField] private TextMeshProUGUI _repweetsAmount;
 
-        private void Awake()
+        private void OnValidate()
         {
-            FillPostWithInfos(_infos);
+            FillPostWithInfos();
         }
-        public void FillPostWithInfos(PostData infos)
+
+        public void FillPostWithInfos()
         {
-            _infos = infos;
-            _username.text = infos.Username;
-            _avatar.sprite = infos.Avatar;
-            _date.text = infos.Date;
-            FillTextContent(infos.Content.Text);
-            FillImageContent(infos.Content.Image);
+            _username.text = _infos.Username;
+            _avatar.sprite = _infos.Avatar;
+            _date.text = _infos.Date;
+            FillTextContent(_infos.Content.Text);
+            FillImageContent(_infos.Content.Image);
             _reactions.SetReaction(_infos.HasPlayerReacted, _infos.ReactionAmount);
-            _commentsAmount.text = infos.CommentsAmount.ToString();
-            _repweetsAmount.text = infos.RepweetAmount.ToString();
+            _commentsAmount.text = _infos.CommentsAmount.ToString();
+            _repweetsAmount.text = _infos.RepweetAmount.ToString();
         }
 
         private void FillTextContent(string text)
