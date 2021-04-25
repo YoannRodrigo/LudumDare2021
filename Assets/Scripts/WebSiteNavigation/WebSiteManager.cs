@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using DG.Tweening;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -24,9 +23,9 @@ public class WebSiteManager : MonoBehaviour
 
     [SerializeField] private TupleTabWebSite mainSite;
     [SerializeField] private List<TupleTabWebSite> otherSites;
-    [SerializeField] private Scrollbar scrollbar;
     [SerializeField] private Sprite activeTab;
     [SerializeField] private Sprite inactiveTab;
+    [SerializeField] private ScrollBarController scrollBarController;
 
     private readonly Vector2 activeSize = new Vector2(500, 50);
     private readonly Vector2 inactiveSize = new Vector2(250, 40);
@@ -38,7 +37,7 @@ public class WebSiteManager : MonoBehaviour
     private void Start()
     {
         currentWebSite = mainSite.website;
-        UpdateScrollBar();
+        scrollBarController.OnTabChanges(currentWebSite);
     }
 
     public void ActivateWebSiteTab(string name)
@@ -58,8 +57,7 @@ public class WebSiteManager : MonoBehaviour
             
             DisableTab();
             ActivateTab(id);
-            UpdateScrollBar();
-            ResetScrollBarPosition();
+            scrollBarController.OnTabChanges(currentWebSite);
             lastId = id;
             UpdateTabPosition();
         }
@@ -100,25 +98,7 @@ public class WebSiteManager : MonoBehaviour
         currentTuple.website.SetActive(true);
         currentWebSite = currentTuple.website;
     }
-
-    private void UpdateScrollBar()
-    {
-        float webSiteHeight = currentWebSite.GetComponent<RectTransform>().rect.height;
-        scrollbar.size = Mathf.Clamp(-webSiteHeight/5400f+1.2f, 0.2f, 1);
-    }
-
-    private void ResetScrollBarPosition()
-    {
-        scrollbar.value = 0;
-    }
     
-    private void UpdateScrollBarPosition()
-    {
-        float webSiteHeight = currentWebSite.GetComponent<RectTransform>().rect.height;
-        float maxHeight = webSiteHeight / 2f;
-        scrollbar.value = currentWebSite.transform.localPosition.y / webSiteHeight + 1f / 2f;
-    }
-
     private TupleTabWebSite FindTuple(string name)
     {
         return otherSites.Find(tupleSite => tupleSite.name.Contains(name));
@@ -128,28 +108,15 @@ public class WebSiteManager : MonoBehaviour
     {
         return otherSites.Find(tupleSite => tupleSite.id == id);
     }
-
-    public void OnScrollBar(float values)
-    {
-        if (tween == null || !tween.IsActive() || tween.IsComplete())
-        {
-            float webSiteHeight = currentWebSite.GetComponent<RectTransform>().rect.height;
-            float cameraViewHeight = GameObject.FindWithTag("MainCamera").GetComponent<Camera>().pixelHeight;
-            float targetValue = Mathf.Clamp((webSiteHeight - cameraViewHeight) * values - (webSiteHeight - cameraViewHeight) / 2f, -(webSiteHeight - cameraViewHeight) / 2f,
-                (webSiteHeight - cameraViewHeight) / 2f);
-            Vector3 targetPosition = new Vector3(currentWebSite.transform.localPosition.x, targetValue, currentWebSite.transform.localPosition.z);
-            currentWebSite.transform.localPosition = targetPosition;
-        }
-    }
     
-    private void OnScroll(InputValue inputValue)
+    /*private void OnScroll(InputValue inputValue)
     {
         float scrollValue = inputValue.Get<float>();
         if(scrollValue != 0)
         {
             float webSiteHeight = currentWebSite.GetComponent<RectTransform>().rect.height;
             float cameraViewHeight = GameObject.FindWithTag("MainCamera").GetComponent<Camera>().pixelHeight;
-            float targetValue = Mathf.Clamp(currentWebSite.transform.localPosition.y + scrollValue,-(webSiteHeight - cameraViewHeight)/2f, (webSiteHeight - cameraViewHeight)/2f);
+            float targetValue = Mathf.Clamp(currentWebSite.transform.localPosition.y - scrollValue,cameraViewHeight/2f, webSiteHeight - cameraViewHeight/2f);
             Vector3 targetPosition = new Vector3(currentWebSite.transform.localPosition.x, targetValue ,currentWebSite.transform.localPosition.z);
             if (tween == null || !tween.IsActive() || tween.IsComplete())
             {
@@ -160,15 +127,7 @@ public class WebSiteManager : MonoBehaviour
                 tween.ChangeEndValue(targetPosition, 0.8f, true).SetEase(Ease.OutSine);
             }
         }
-    }
-
-    private void Update()
-    {
-        if (tween != null && tween.IsActive() && !tween.IsComplete())
-        {
-           UpdateScrollBarPosition();
-        }
-    }
+    }*/
 
     private void UpdateTabPosition()
     {
