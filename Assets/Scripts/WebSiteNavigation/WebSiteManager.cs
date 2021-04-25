@@ -109,25 +109,33 @@ public class WebSiteManager : MonoBehaviour
         return otherSites.Find(tupleSite => tupleSite.id == id);
     }
     
-    /*private void OnScroll(InputValue inputValue)
+    private void OnScroll(InputValue inputValue)
     {
         float scrollValue = inputValue.Get<float>();
         if(scrollValue != 0)
         {
             float webSiteHeight = currentWebSite.GetComponent<RectTransform>().rect.height;
             float cameraViewHeight = GameObject.FindWithTag("MainCamera").GetComponent<Camera>().pixelHeight;
-            float targetValue = Mathf.Clamp(currentWebSite.transform.localPosition.y - scrollValue,cameraViewHeight/2f, webSiteHeight - cameraViewHeight/2f);
-            Vector3 targetPosition = new Vector3(currentWebSite.transform.localPosition.x, targetValue ,currentWebSite.transform.localPosition.z);
+            float targetValue = Mathf.Clamp(currentWebSite.GetComponent<RectTransform>().anchoredPosition.y - scrollValue,0, webSiteHeight - cameraViewHeight);
+            Vector3 targetPosition = new Vector3(currentWebSite.GetComponent<RectTransform>().anchoredPosition.x, targetValue ,0);
             if (tween == null || !tween.IsActive() || tween.IsComplete())
             {
-                tween = currentWebSite.transform.DOLocalMove(targetPosition, 0.8f).SetEase(Ease.InOutSine);
+                tween = currentWebSite.GetComponent<RectTransform>().DOAnchorPos3D(targetPosition,0.3f).SetEase(Ease.InOutSine);
             }
             else
             {
                 tween.ChangeEndValue(targetPosition, 0.8f, true).SetEase(Ease.OutSine);
             }
         }
-    }*/
+    }
+
+    private void Update()
+    {
+        if (tween != null && tween.IsActive() && !tween.IsComplete())
+        {
+            scrollBarController.UpdateValues();
+        }
+    }
 
     private void UpdateTabPosition()
     {

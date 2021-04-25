@@ -60,7 +60,7 @@
             "id": "e492d05f-5ebc-4738-9349-fab487dcb8b4",
             "actions": [
                 {
-                    "name": "Scroll",
+                    "name": "WebsiteScroll",
                     "type": "Value",
                     "id": "1308321d-7f79-407b-96e9-fe98c364c49b",
                     "expectedControlType": "",
@@ -76,7 +76,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Submit",
+                    "name": "ConsoleSubmit",
                     "type": "Button",
                     "id": "bcd9c206-7833-4ca8-b899-321786893f2d",
                     "expectedControlType": "Button",
@@ -92,7 +92,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Scroll",
+                    "action": "WebsiteScroll",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -103,7 +103,7 @@
                     "interactions": "",
                     "processors": "Scale(factor=60)",
                     "groups": "",
-                    "action": "Scroll",
+                    "action": "WebsiteScroll",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -114,7 +114,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Scroll",
+                    "action": "WebsiteScroll",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -125,7 +125,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Scroll",
+                    "action": "WebsiteScroll",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -147,7 +147,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Submit",
+                    "action": "ConsoleSubmit",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
