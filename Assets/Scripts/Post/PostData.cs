@@ -11,6 +11,8 @@ namespace post
         [SerializeField] public string Username;
         [SerializeField] public ContentData Content;
         [SerializeField] public int ReactionAmount;
+        [SerializeField] public int CommentsAmount;
+        [SerializeField] public int RepweetAmount;
         [SerializeField] public bool HasPlayerReacted;
         [SerializeField] public PostData[] Comments;
         [SerializeField] public string Date;

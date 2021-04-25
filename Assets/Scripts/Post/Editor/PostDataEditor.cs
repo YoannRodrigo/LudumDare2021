@@ -13,6 +13,8 @@ namespace post
         private SerializedProperty _avatar;
         private SerializedProperty _content;
         private SerializedProperty _reactionAmount;
+        private SerializedProperty _commentsAmount;
+        private SerializedProperty _repweetsAmount;
         private SerializedProperty _hasReacted;
         private SerializedProperty _comments;
 
@@ -22,6 +24,8 @@ namespace post
             _avatar = serializedObject.FindProperty("Avatar");
             _content = serializedObject.FindProperty("Content");
             _reactionAmount = serializedObject.FindProperty("ReactionAmount");
+            _commentsAmount = serializedObject.FindProperty("CommentsAmount");
+            _repweetsAmount = serializedObject.FindProperty("RepweetAmount");
             _comments = serializedObject.FindProperty("Comments");
             _date = serializedObject.FindProperty("Date");
             _hasReacted = serializedObject.FindProperty("HasPlayerReacted");
@@ -35,6 +39,8 @@ namespace post
             EditorGUILayout.PropertyField(_date, new GUIContent("Date"));
             EditorGUILayout.PropertyField(_content, new GUIContent("Content"));
             EditorGUILayout.PropertyField(_reactionAmount, new GUIContent("Reactions"));
+            EditorGUILayout.PropertyField(_commentsAmount, new GUIContent("Comments"));
+            EditorGUILayout.PropertyField(_repweetsAmount, new GUIContent("Repweets"));
             EditorGUILayout.PropertyField(_hasReacted, new GUIContent("Has Player Reacted"));
             EditorGUILayout.PropertyField(_comments, new GUIContent("Comments"));
             DisplayComments();

@@ -18,6 +18,8 @@ namespace post
         [SerializeField] private SceneReference _modelViewerScene;
         [SerializeField] private BlackBackground _blackBackground;
         [SerializeField] private PostReaction _reactions;
+        [SerializeField] private TextMeshProUGUI _commentsAmount;
+        [SerializeField] private TextMeshProUGUI _repweetsAmount;
 
         private void Awake()
         {
@@ -32,6 +34,8 @@ namespace post
             FillTextContent(infos.Content.Text);
             FillImageContent(infos.Content.Image);
             _reactions.SetReaction(_infos.HasPlayerReacted, _infos.ReactionAmount);
+            _commentsAmount.text = infos.CommentsAmount.ToString();
+            _repweetsAmount.text = infos.RepweetAmount.ToString();
         }
 
         private void FillTextContent(string text)
