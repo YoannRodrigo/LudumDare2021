@@ -21,7 +21,7 @@ public class ConsoleHistory : MonoBehaviour
 
         if(ContentRectHolder.rect.height <= (ConsoleLineHolder.childCount * g.GetComponent<RectTransform>().rect.height)){
             ContentRectHolder.sizeDelta = new Vector2(0, ContentRectHolder.rect.height + g.GetComponent<RectTransform>().rect.height);
-            ConsoleScroll.verticalNormalizedPosition = -0.01f;
+            ConsoleScroll.verticalNormalizedPosition = 0;
         }
 
         g.transform.SetParent(ConsoleLineHolder);

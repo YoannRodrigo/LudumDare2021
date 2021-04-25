@@ -8,6 +8,11 @@ public class Hint : ScriptableObject
     [SerializeField] private int websiteID;
     [SerializeField] private List<string> hintsTexts;
     private int currentTextId;
+
+    public void ResetScriptable()
+    {
+        currentTextId = 0;
+    }
     
     public int GetIdSequence()
     {
@@ -21,13 +26,12 @@ public class Hint : ScriptableObject
 
     public string GetNextText()
     {
-        string toReturn = null;
+        string toReturn = "";
         if (currentTextId < GetTextCount())
         {
             toReturn = hintsTexts[currentTextId];
             currentTextId++;
         }
-
         return toReturn;
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -7,8 +8,14 @@ public class HintManager : MonoBehaviour
 {
     [SerializeField] private List<Hint> hints;
     [SerializeField] private List<TextMeshProUGUI> textZone;
+
+    [SerializeField] private RectTransform hintZone;
+    [SerializeField] private RectTransform fullTargetTransform;
+    [SerializeField] private RectTransform reduceTargetTransform;
+    
     private int currentZone;
-    private Hint currentHint;
+    [SerializeField] private Hint currentHint;
+    private bool isFull;
 
     public void GetCurrentHint(int sequence)
     {
@@ -19,7 +26,9 @@ public class HintManager : MonoBehaviour
     {
         if (currentZone < textZone.Count)
         {
-            textZone[currentZone].text = currentHint.GetNextText();
+            string textToAdd = currentHint.GetNextText();
+            textZone[currentZone].transform.parent.gameObject.SetActive(true);
+            textZone[currentZone].text = textToAdd;
             currentZone++;
         }
     }
@@ -28,7 +37,22 @@ public class HintManager : MonoBehaviour
     {
         foreach (TextMeshProUGUI textMeshProUGUI in textZone)
         {
+            textMeshProUGUI.transform.parent.gameObject.SetActive(false);
             textMeshProUGUI.text = "";
+        }
+    }
+
+    public void OnReduceButton()
+    {
+        isFull = !isFull;
+        hintZone.anchoredPosition = isFull ? fullTargetTransform.anchoredPosition : reduceTargetTransform.anchoredPosition;
+    }
+
+    private void Start()
+    {
+        foreach (Hint hint in hints)
+        {
+            hint.ResetScriptable();
         }
     }
 }

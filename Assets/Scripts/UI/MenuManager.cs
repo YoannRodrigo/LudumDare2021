@@ -20,7 +20,6 @@ public class MenuManager : MonoBehaviour
 
     public void OnMainVolumeClick(int value)
     {
-        print(value);
         nbMainVolumeBars = Mathf.Clamp(nbMainVolumeBars + value, 0, 20);
         SoundManager.UpdateMainVolume(nbMainVolumeBars/20f);
         int i;
