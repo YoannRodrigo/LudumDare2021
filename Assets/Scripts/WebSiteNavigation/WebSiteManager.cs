@@ -59,7 +59,7 @@ public class WebSiteManager : MonoBehaviour
             DisableTab();
             ActivateTab(id);
             UpdateScrollBar();
-            UpdateScrollBarPosition();
+            ResetScrollBarPosition();
             lastId = id;
             UpdateTabPosition();
         }
@@ -107,6 +107,11 @@ public class WebSiteManager : MonoBehaviour
         scrollbar.size = Mathf.Clamp(-webSiteHeight/5400f+1.2f, 0.2f, 1);
     }
 
+    private void ResetScrollBarPosition()
+    {
+        scrollbar.value = 0;
+    }
+    
     private void UpdateScrollBarPosition()
     {
         float webSiteHeight = currentWebSite.GetComponent<RectTransform>().rect.height;
