@@ -27,6 +27,8 @@ public class WebSiteManager : MonoBehaviour
     [SerializeField] private Sprite inactiveTab;
     [SerializeField] private ScrollBarController scrollBarController;
 
+    public float ScrollDelay;
+
     private readonly Vector2 activeSize = new Vector2(500, 50);
     private readonly Vector2 inactiveSize = new Vector2(250, 40);
 
@@ -124,7 +126,7 @@ public class WebSiteManager : MonoBehaviour
             }
             else
             {
-                tween.ChangeEndValue(targetPosition, 0.8f, true).SetEase(Ease.OutSine);
+                tween.ChangeEndValue(targetPosition, this.ScrollDelay, true).SetEase(Ease.OutSine);
             }
         }
     }

@@ -6237,6 +6237,7 @@ MonoBehaviour:
   activeTab: {fileID: 21300000, guid: 8cc5f7f67f706ea43880087e4da352a9, type: 3}
   inactiveTab: {fileID: 21300000, guid: 24bbb3f413d0c094fbf198b6a52036d5, type: 3}
   scrollBarController: {fileID: 1479878742}
+  ScrollDelay: 0.1
 --- !u!114 &1193033752
 MonoBehaviour:
   m_ObjectHideFlags: 0
