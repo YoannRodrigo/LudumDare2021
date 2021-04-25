@@ -2126,7 +2126,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: 12037c55-6763-4789-b723-6dfccb754c8f
+  m_DefaultActionMap: Menu
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1 &379088051
@@ -8111,7 +8111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -10585,6 +10585,7 @@ MonoBehaviour:
   hintZone: {fileID: 1619050688}
   fullTargetTransform: {fileID: 950893839}
   reduceTargetTransform: {fileID: 176585018}
+  currentHint: {fileID: 0}
 --- !u!4 &2113465329
 Transform:
   m_ObjectHideFlags: 0
