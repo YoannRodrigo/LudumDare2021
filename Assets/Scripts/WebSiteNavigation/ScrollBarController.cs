@@ -37,7 +37,7 @@ public class ScrollBarController : MonoBehaviour
 
     private void UpdateValues()
     {
-        if(Math.Abs(webSiteHeight - cameraHeight) > 0.0f)
+        if(webSiteHeight - cameraHeight > 0.0f)
         {
             percentage = currentWebSite.GetComponent<RectTransform>().anchoredPosition.y / (webSiteHeight - cameraHeight);
             scrollbar.value = percentage;
