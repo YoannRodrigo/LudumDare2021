@@ -35,7 +35,7 @@ public class ScrollBarController : MonoBehaviour
         currentWebSite.GetComponent<RectTransform>().anchoredPosition = targetPosition;
     }
 
-    private void UpdateValues()
+    public void UpdateValues()
     {
         if(webSiteHeight - cameraHeight > 0.0f)
         {
