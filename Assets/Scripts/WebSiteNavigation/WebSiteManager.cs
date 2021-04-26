@@ -60,7 +60,6 @@ public class WebSiteManager : MonoBehaviour
 
     public void CalculateScrollLength(Action callback = null)
     {
-
         _feed.UpdateFeed(this, () =>
          {
              float webSiteHeight = currentWebSite.GetComponent<RectTransform>().rect.height;
@@ -93,10 +92,12 @@ public class WebSiteManager : MonoBehaviour
 
             DisableTab();
             ActivateTab(id);
-            CalculateScrollLength();
-            scrollBarController.OnTabChanges(currentWebSite);
             lastId = id;
-            UpdateTabPosition();
+            CalculateScrollLength(() =>
+            {
+                scrollBarController.OnTabChanges(currentWebSite);
+                UpdateTabPosition();
+            });
         }
     }
 
@@ -157,7 +158,6 @@ public class WebSiteManager : MonoBehaviour
         if (scrollValue != 0)
         {
             float cameraViewHeight = GameObject.FindWithTag("MainCamera").GetComponent<Camera>().pixelHeight;
-            Debug.Log(cameraViewHeight);
             float targetValue = Mathf.Clamp(currentWebSite.GetComponent<RectTransform>().anchoredPosition.y - scrollValue, 0, scrollLength - cameraViewHeight);
             targetValue = Mathf.Max(targetValue, 0);
             ScrollPercent = targetValue / (scrollLength - cameraViewHeight);
