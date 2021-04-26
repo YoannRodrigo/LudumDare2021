@@ -12,17 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b15a2c0fd1cde264fb93070a420a9930, type: 3}
   m_Name: Cursed Glitched
   m_EditorClassIdentifier: 
-  Avatar: {fileID: 21300000, guid: 046a545492530084e830fa8ef7697863, type: 3}
-  Username: ALED
+  Avatar: {fileID: 21300000, guid: c65b9e99e8e73df4783c49b5d4426b33, type: 3}
+  Username: <b><color=red>Prisonner of the Pewt</color></b>
   Content:
-    Text: Fully charged phone at 66%, 66 minutes left, 66 differents outcomes. I'm
-      so 66 ready for this, man ! <color=#0096E1>#66</color>
+    Text: <size=40><b><color=red>HELP ME GET OUT OF HERE, PLEASE</color></b></size><size=24><b><color=red>I'm
+      scared, everything is black...Surely, if you go deeper, you'll find a way.
+      I'm begging you</color></b></size>
     Image: {fileID: 0}
-    model3D: {fileID: 919132149155446097, guid: 9f7227058a5703044b59080b4cd826d5, type: 3}
-  ReactionAmount: 66
-  CommentsAmount: 66
-  RepweetAmount: 66
+    model3D: {fileID: 0}
+  ReactionAmount: 666
+  CommentsAmount: 666
+  RepweetAmount: 666
   HasPlayerReacted: 0
   Comments:
   - {fileID: 11400000, guid: 5fcebb4f1eb786643b66e5bdddb9acca, type: 2}
-  Date: 06:06
+  Date: <b><color=red>666:666</color></b>
