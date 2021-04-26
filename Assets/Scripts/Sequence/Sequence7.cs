@@ -45,6 +45,8 @@ public class Sequence7 : Sequence
     protected override void ValidateSequence()
     {
         base.ValidateSequence();
+        SoundManager.StopMusic("Main_Theme");
+        SoundManager.PlayMusic("End_Theme");
         FindObjectOfType<WebSiteManager>().ActivateWebSiteTab(4);
     }
 }
