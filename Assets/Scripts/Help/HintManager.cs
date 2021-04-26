@@ -25,7 +25,7 @@ public class HintManager : MonoBehaviour
 
     public void ShowAHint()
     {
-        if (currentZone < textZone.Count)
+        if (currentZone < textZone.Count && currentHint)
         {
             string textToAdd = currentHint.GetNextText();
             SoundManager.PlaySFX("New_Message");

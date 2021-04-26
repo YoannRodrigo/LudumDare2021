@@ -41,6 +41,9 @@ public class Sequence8 : Sequence
         steps.Add(step);
         base.Start();
     }
-    
-    
+
+    protected override void ValidateSequence()
+    {
+        gameManager.OnWin();
+    }
 }
