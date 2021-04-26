@@ -26,7 +26,7 @@ namespace post
         [SerializeField] private TextMeshProUGUI _repweetsAmount;
 
         private bool isModelOpen;
-        private UnityEvent onFav = new UnityEvent();
+        protected UnityEvent onFav = new UnityEvent();
 
         public void AddListenerOnFav(UnityAction unityAction)
         {
@@ -107,7 +107,7 @@ namespace post
             ModelViewer.Instance.CloseViewer();
         }
 
-        public void ReactToPost()
+        public virtual void ReactToPost()
         {
             onFav.Invoke();
             _infos.HasPlayerReacted = !_infos.HasPlayerReacted;

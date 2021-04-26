@@ -24,6 +24,8 @@ namespace post
         [SerializeField] private TextMeshProUGUI _commentsAmountGlitch;
         [SerializeField] private TextMeshProUGUI _repweetsAmountGlitch;
 
+        private bool _isGlitchPostActive = false;
+
 
         protected override void OnValidate()
         {
@@ -95,6 +97,7 @@ namespace post
                 {
                     container.SetActive(true);
                 }
+                _isGlitchPostActive = true;
             }
             else
             {
@@ -106,6 +109,22 @@ namespace post
                 {
                     container.SetActive(true);
                 }
+                _isGlitchPostActive = false;
+            }
+        }
+
+        public override void ReactToPost()
+        {
+            if (_isGlitchPostActive)
+            {
+                onFav.Invoke();
+                _infosGlitch.HasPlayerReacted = !_infosGlitch.HasPlayerReacted;
+                _infosGlitch.ReactionAmount = _infosGlitch.HasPlayerReacted ? _infosGlitch.ReactionAmount + 1 : _infosGlitch.ReactionAmount - 1;
+                _reactionsGlitch.SetReaction(_infosGlitch.HasPlayerReacted, _infosGlitch.ReactionAmount);
+            }
+            else
+            {
+                base.ReactToPost();
             }
         }
 
