@@ -10554,8 +10554,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _websiteManager: {fileID: 1193033751}
   _modelViewerScene:
-    sceneAsset: {fileID: 0}
-    scenePath: 
+    sceneAsset: {fileID: 102900000, guid: 84c705848e7d236448b9d80486626c36, type: 3}
+    scenePath: Assets/Scenes/CYRIL/CYRIL - object viewer.unity
   _layoutGroup: {fileID: 1210562915}
   _blackBackground: {fileID: 1103041775}
   _posts: []
