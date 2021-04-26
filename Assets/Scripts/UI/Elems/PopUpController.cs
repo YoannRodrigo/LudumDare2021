@@ -15,7 +15,7 @@ public class PopUpController : MonoBehaviour
 
     public void OnEnable(){
 
-        basePos = this.transform.position;  
+        basePos = this.GetComponent<RectTransform>().anchoredPosition;  
 
         MovementUtils.MoveY(this.gameObject.GetComponent<RectTransform>(), this.MovementValue, this.MovementDuration);
     }

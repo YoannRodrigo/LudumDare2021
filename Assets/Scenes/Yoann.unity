@@ -1188,8 +1188,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   step1:
     modelPost: {fileID: 1595624473}
-  step2:
-    modelPost: {fileID: 1595624473}
   step3:
     postToFav: {fileID: 669284715}
 --- !u!1 &187190718
@@ -3037,7 +3035,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &369801853
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3862,7 +3860,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2630414251995947422, guid: 61bf4146308ec70439b75c6d900eb129, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2630414251995947423, guid: 61bf4146308ec70439b75c6d900eb129, type: 3}
       propertyPath: m_Pivot.x
@@ -3901,6 +3899,18 @@ PrefabInstance:
       value: 98
       objectReference: {fileID: 0}
     - target: {fileID: 2630414251995947423, guid: 61bf4146308ec70439b75c6d900eb129, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2630414251995947423, guid: 61bf4146308ec70439b75c6d900eb129, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2630414251995947423, guid: 61bf4146308ec70439b75c6d900eb129, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2630414251995947423, guid: 61bf4146308ec70439b75c6d900eb129, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -3930,11 +3940,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2630414251995947423, guid: 61bf4146308ec70439b75c6d900eb129, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 176
       objectReference: {fileID: 0}
     - target: {fileID: 2630414251995947423, guid: 61bf4146308ec70439b75c6d900eb129, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 117
       objectReference: {fileID: 0}
     - target: {fileID: 2630414251995947423, guid: 61bf4146308ec70439b75c6d900eb129, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4363,9 +4373,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   step1:
-    consoleCommand: {fileID: 0}
+    consoleCommand: {fileID: 11400000, guid: c922e02a73a94dd4b879afe88d89e128, type: 2}
   step2:
-    consoleCommand: {fileID: 0}
+    consoleCommand: {fileID: 11400000, guid: 2f5d5e720872df5468726610d7a16f14, type: 2}
 --- !u!1 &588369086
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,26 +9,15 @@ public class Sequence1 : Sequence
    {
       public Post modelPost;
 
-      public override void Update()
+      public override void Start()
       {
-         if (modelPost.IsModelOpen())
-         {
-            ValidateStep();
-         }
+         base.Start();
+         stepId = 1;
       }
-   }
-   
-   [Serializable]
-   public class Step2 : Step
-   {
-      public Post modelPost;
-      private bool isHourSeen;
-      private bool isPaperLeftSeen;
-      private bool isPaperRightSeen;
 
       public override void Update()
       {
-         if (isHourSeen && isPaperLeftSeen && isPaperRightSeen)
+         if (modelPost.IsModelOpen())
          {
             ValidateStep();
          }
@@ -45,6 +34,7 @@ public class Sequence1 : Sequence
       {
          base.Start();
          postToFav.AddListenerOnFav(IncreaseNbClick);
+         stepId = 3;
       }
 
       private void IncreaseNbClick()
@@ -65,13 +55,11 @@ public class Sequence1 : Sequence
    }
 
    public Step1 step1;
-   public Step2 step2;
    public Step3 step3;
 
    protected override void Start()
    {
       steps.Add(step1);
-      steps.Add(step2);
       steps.Add(step3);
       base.Start();
    }

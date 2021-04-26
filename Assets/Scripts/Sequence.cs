@@ -10,6 +10,7 @@ public class Sequence : MonoBehaviour
     {
         protected bool isValidate;
         protected bool isActive;
+        protected int stepId;
 
         public virtual void Start()
         {
@@ -19,6 +20,7 @@ public class Sequence : MonoBehaviour
         
         protected void ValidateStep()
         {
+            Debug.Log("ValidateStep" + stepId);
             isValidate = true;
         }
 

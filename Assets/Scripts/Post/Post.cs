@@ -96,6 +96,7 @@ namespace post
         {
             if (_infos.Content.model3D != null)
             {
+                print("model3D");
                 isModelOpen = true;
                 _feed.OpenModelViewer(_infos.Content.model3D);
             }
