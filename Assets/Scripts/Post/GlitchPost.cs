@@ -9,7 +9,6 @@ namespace post
 {
     public class GlitchPost : Post
     {
-        [SerializeField] private WebSiteManager _websiteManager;
         [SerializeField] private GameObject[] _normalPost;
         [SerializeField] private GameObject[] _glitchedPost;
         [SerializeField, Range(0, 1)] private float _detectRange;

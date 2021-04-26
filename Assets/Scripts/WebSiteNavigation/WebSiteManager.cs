@@ -32,7 +32,7 @@ public class WebSiteManager : MonoBehaviour
     public float ScrollDelay;
     public bool HasObjectViewerOpen;
     private float _scrollPercent;
-    private float scrollLength;
+    [SerializeField] private float scrollLength;
 
     private readonly Vector2 activeSize = new Vector2(500, 50);
     private readonly Vector2 inactiveSize = new Vector2(250, 40);
@@ -50,34 +50,30 @@ public class WebSiteManager : MonoBehaviour
             OnScroll?.Invoke(_scrollPercent);
         }
     }
-
     public float ScrollLength { get => scrollLength; private set => scrollLength = value; }
-    private void Awake()
-    {
-    }
+
     private void Start()
     {
-        CalculateScrollLength(() => scrollBarController.OnTabChanges(currentWebSite));
         currentWebSite = mainSite.website;
-        
+        CalculateScrollLength(() => scrollBarController.OnTabChanges(currentWebSite));
     }
 
-    private void CalculateScrollLength(Action callback = null)
+    public void CalculateScrollLength(Action callback = null)
     {
-        if (_feed.IsSetuped)
-        {
-            float webSiteHeight = currentWebSite.GetComponent<RectTransform>().rect.height;
-            scrollLength = Mathf.Min(webSiteHeight, _feed.FeedSize - _feed.FeedStartHeight);
-        }
-        else
-        {
-            _feed.OnSetupFinished += () =>
-            {
-                float webSiteHeight = currentWebSite.GetComponent<RectTransform>().rect.height;
-                scrollLength = Mathf.Min(webSiteHeight, _feed.FeedSize - _feed.FeedStartHeight);
-                callback();
-            };
-        }
+
+        _feed.UpdateFeed(this, () =>
+         {
+             float webSiteHeight = currentWebSite.GetComponent<RectTransform>().rect.height;
+             if (lastId == 0)
+             {
+                 scrollLength = Mathf.Min(webSiteHeight, _feed.FeedSize - _feed.FeedStartHeight);
+             }
+             else
+             {
+                 scrollLength = webSiteHeight;
+             }
+             callback?.Invoke();
+         });
     }
 
     public void ActivateWebSiteTab(string name)
@@ -161,7 +157,9 @@ public class WebSiteManager : MonoBehaviour
         if (scrollValue != 0)
         {
             float cameraViewHeight = GameObject.FindWithTag("MainCamera").GetComponent<Camera>().pixelHeight;
+            Debug.Log(cameraViewHeight);
             float targetValue = Mathf.Clamp(currentWebSite.GetComponent<RectTransform>().anchoredPosition.y - scrollValue, 0, scrollLength - cameraViewHeight);
+            targetValue = Mathf.Max(targetValue, 0);
             ScrollPercent = targetValue / (scrollLength - cameraViewHeight);
             Vector3 targetPosition = new Vector3(currentWebSite.GetComponent<RectTransform>().anchoredPosition.x, targetValue, 0);
             if (tween == null || !tween.IsActive() || tween.IsComplete())

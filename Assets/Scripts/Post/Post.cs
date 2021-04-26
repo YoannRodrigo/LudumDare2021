@@ -11,6 +11,7 @@ namespace post
 {
     public class Post : MonoBehaviour
     {
+        [SerializeField] protected WebSiteManager _websiteManager;
         [SerializeField] private PostFeed _feed;
         [SerializeField] private PostData _infos;
         [SerializeField] private GameObject _containerMedia;
@@ -113,6 +114,11 @@ namespace post
             _infos.HasPlayerReacted = !_infos.HasPlayerReacted;
             _infos.ReactionAmount = _infos.HasPlayerReacted ? _infos.ReactionAmount + 1 : _infos.ReactionAmount - 1;
             _reactions.SetReaction(_infos.HasPlayerReacted, _infos.ReactionAmount);
+        }
+
+        public void ActivatePost()
+        {
+            gameObject.SetActive(true);
         }
     }
 }

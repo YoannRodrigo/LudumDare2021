@@ -36,17 +36,17 @@ namespace post
             StartCoroutine(Layout());
         }
 
-        private IEnumerator Layout()
+        private IEnumerator Layout(Action callback = null)
         {
             _layoutGroup.enabled = false;
-            yield return new WaitForEndOfFrame();
+            yield return null;
             _layoutGroup.enabled = true;
-            yield return new WaitForEndOfFrame();
+            yield return null;
             _feedSize = GetComponent<RectTransform>().sizeDelta.y;
             _feedStartHeight = GetComponent<RectTransform>().anchoredPosition.y;
             _layoutGroup.enabled = false;
             IsSetuped = true;
-
+            callback?.Invoke();
         }
 
         public void OpenModelViewer(GameObject model3D)
@@ -62,6 +62,10 @@ namespace post
                     _websiteManager.HasObjectViewerOpen = false;
                 });
             };
+        }
+        public void UpdateFeed(MonoBehaviour coroutineStarter, Action callback = null)
+        {
+            coroutineStarter.StartCoroutine(Layout(callback));
         }
     }
 }

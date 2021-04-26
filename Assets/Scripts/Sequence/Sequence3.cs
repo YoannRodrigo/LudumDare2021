@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using post;
 using UnityEngine;
 
 [Serializable]
@@ -9,7 +10,7 @@ public class Sequence3 : Sequence
     public class Step1 : Step
     {
         public ConsoleCommand consoleCommand;
-        [SerializeField] private List<GameObject> postToUnlock;
+        [SerializeField] private List<Post> postToUnlock;
         private bool isCommandEnter;
 
         public override void Start()
@@ -25,21 +26,21 @@ public class Sequence3 : Sequence
                 isCommandEnter = true;
             }
         }
-       
+
         public override void Update()
         {
             if (isCommandEnter)
             {
-                foreach (GameObject post in postToUnlock)
+                foreach (Post post in postToUnlock)
                 {
-                    post.SetActive(true);
+                    post.ActivatePost();
                 }
                 consoleCommand.CallbackEvent.RemoveListener(CommandEnter);
                 ValidateStep();
             }
         }
     }
-   
+
     [Serializable]
     public class Step2 : Step
     {
@@ -59,7 +60,7 @@ public class Sequence3 : Sequence
                 isCommandEnter = true;
             }
         }
-       
+
         public override void Update()
         {
             if (isCommandEnter)
@@ -69,17 +70,17 @@ public class Sequence3 : Sequence
             }
         }
     }
-    
+
     public Step1 step1;
     public Step2 step2;
-    
+
     protected override void Start()
     {
         steps.Add(step1);
         steps.Add(step2);
         base.Start();
     }
-    
+
     protected override void ValidateSequence()
     {
         base.ValidateSequence();
