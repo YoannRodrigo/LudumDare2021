@@ -198,7 +198,7 @@ public class WebSiteManager : MonoBehaviour
             }
             else
             {
-                otherSites[0].tab.GetComponent<RectTransform>().anchoredPosition = new Vector2(mainSite.tab.GetComponent<RectTransform>().anchoredPosition.x + 385, tabPosition.y);
+                otherSites[0].tab.GetComponent<RectTransform>().anchoredPosition = new Vector2(mainSite.tab.GetComponent<RectTransform>().anchoredPosition.x + 335, tabPosition.y);
             }
         }
         for (int i = 1; i < otherSites.Count; i++)

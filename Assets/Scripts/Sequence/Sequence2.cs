@@ -83,7 +83,7 @@ public class Sequence2 : Sequence
     public Step1 step1;
     public Step2 step2;
     public Step3 step3;
-    public Step3 step4;
+    public Step4 step4;
     
     protected override void Start()
     {

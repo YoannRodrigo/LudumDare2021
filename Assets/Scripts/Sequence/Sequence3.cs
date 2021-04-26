@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 [Serializable]
 public class Sequence3 : Sequence
@@ -7,6 +9,7 @@ public class Sequence3 : Sequence
     public class Step1 : Step
     {
         public ConsoleCommand consoleCommand;
+        [SerializeField] private List<GameObject> postToUnlock;
         private bool isCommandEnter;
 
         public override void Start()
@@ -27,6 +30,10 @@ public class Sequence3 : Sequence
         {
             if (isCommandEnter)
             {
+                foreach (GameObject post in postToUnlock)
+                {
+                    post.SetActive(true);
+                }
                 consoleCommand.CallbackEvent.RemoveListener(CommandEnter);
                 ValidateStep();
             }

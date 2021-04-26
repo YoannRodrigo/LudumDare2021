@@ -10,6 +10,7 @@ public class Sequence : MonoBehaviour
     {
         protected bool isValidate;
         protected bool isActive;
+        protected int stepId;
 
         public virtual void Start()
         {

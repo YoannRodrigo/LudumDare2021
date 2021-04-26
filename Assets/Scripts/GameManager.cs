@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private HintManager hintManager;
-    private int currentSequenceID = 1;
+    [SerializeField] private int currentSequenceID;
     private float timeSinceLastHint;
 
     [SerializeField] private List<Sequence> allSequence;
@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        hintManager.GetCurrentHint(currentSequenceID);
+        hintManager.GetCurrentHint(currentSequenceID+1);
         currentSequence = allSequence[0];
         //currentSequence.OnSequenceEnd().AddListener(OnNextSequence);
     }
