@@ -19,7 +19,7 @@ namespace post
         [SerializeField] private TextMeshProUGUI _username;
         [SerializeField] private TextMeshProUGUI _date;
         [SerializeField] private TextMeshProUGUI _textContent;
-        [SerializeField] private SceneReference _modelViewerScene;
+        [SerializeField] protected SceneReference _modelViewerScene;
         [SerializeField] private BlackBackground _blackBackground;
         [SerializeField] private PostReaction _reactions;
         [SerializeField] private TextMeshProUGUI _commentsAmount;
@@ -39,7 +39,7 @@ namespace post
         }
 
 
-        private void OnValidate()
+        protected virtual void OnValidate()
         {
             FillPostWithInfos();
         }
