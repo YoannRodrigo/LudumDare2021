@@ -83,14 +83,12 @@ public class Sequence2 : Sequence
     public Step1 step1;
     public Step2 step2;
     public Step3 step3;
-    public Step4 step4;
     
     protected override void Start()
     {
        steps.Add(step1);
        steps.Add(step2);
        steps.Add(step3);
-       steps.Add(step4);
        base.Start();
     }
 }

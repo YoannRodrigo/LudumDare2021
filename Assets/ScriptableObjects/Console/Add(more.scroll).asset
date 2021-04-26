@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Add(more.scroll)
   m_EditorClassIdentifier: 
   Command: Add(more.scroll)
-  Response: Unlocked more scrolling!
-  ResponseColor: {r: 0.4575472, g: 1, b: 0.57544106, a: 0}
+  Response: Pewtter has expanded...
+  ResponseColor: {r: 0.33490568, g: 0.632331, b: 1, a: 0}
   CallbackEvent:
     m_PersistentCalls:
       m_Calls:

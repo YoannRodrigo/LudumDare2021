@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Unlock(EchoShop.exe)
   m_EditorClassIdentifier: 
   Command: Unlock(EchoShop.exe)
-  Response: Unlocked a new tab!
-  ResponseColor: {r: 0.5698062, g: 1, b: 0.5424528, a: 1}
+  Response: You went deeper...
+  ResponseColor: {r: 1, g: 0.8254049, b: 0.5411765, a: 1}
   CallbackEvent:
     m_PersistentCalls:
       m_Calls: []
