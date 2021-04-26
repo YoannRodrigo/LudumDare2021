@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using post;
 using UnityEngine;
 
 public class Sequence7 : Sequence

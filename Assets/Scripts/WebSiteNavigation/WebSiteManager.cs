@@ -82,6 +82,7 @@ public class WebSiteManager : MonoBehaviour
 
     public void ActivateWebSiteTab(int id)
     {
+        SoundManager.PlaySFX("New_Tab");
         FindTuple(id).tab.SetActive(true);
     }
 

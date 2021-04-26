@@ -75,6 +75,7 @@ public class Sequence2 : Sequence
        {
           if (isCommandEnter)
           {
+             SoundManager.PlaySFX("New_Tweets");
              foreach (Post post in postToUnlock)
              {
                 post.ActivatePost();

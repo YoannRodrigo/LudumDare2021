@@ -16,7 +16,7 @@ public class PopUpController : MonoBehaviour
     public void OnEnable(){
 
         basePos = this.GetComponent<RectTransform>().anchoredPosition;  
-
+        SoundManager.PlaySFX("Open_Popup");
         MovementUtils.MoveY(this.gameObject.GetComponent<RectTransform>(), this.MovementValue, this.MovementDuration);
     }
 

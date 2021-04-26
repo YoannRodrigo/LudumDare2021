@@ -9,7 +9,6 @@ public class Song : MonoBehaviour
 
     public void OpenPopup()
     {
-        print(_songName);
         _popup.OpenPopup(_songName);
     }
 }

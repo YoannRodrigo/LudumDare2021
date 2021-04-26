@@ -129,6 +129,7 @@ public class Sequence4 : Sequence
 
     protected override void ValidateSequence()
     {
+        SoundManager.PlaySFX("New_Tweets");
         foreach (GameObject post in postToUnlock)
         {
             post.SetActive(true);

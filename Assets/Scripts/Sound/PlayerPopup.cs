@@ -23,15 +23,16 @@ public class PlayerPopup : MonoBehaviour
         {
             return;
         }
+        SoundManager.PlaySFX("Open_Console");
         _isOpen = true;
         GetComponent<RectTransform>().DOAnchorPosY(basePos.y + _displacementAmount.y, 1).SetEase(Ease.OutCubic);
         _musicLoaded = songToPlay;
-        print(_musicLoaded);
     }
 
     public void ClickOnClose()
     {
         _isOpen = false;
+        SoundManager.PlaySFX("Open_Console");
         GetComponent<RectTransform>().DOAnchorPosY(basePos.y, 1).SetEase(Ease.OutCubic).OnComplete(() => _isOpen = false);
         if (_isPlaying)
         {
@@ -48,7 +49,6 @@ public class PlayerPopup : MonoBehaviour
         }
         else
         {
-            print(_musicLoaded);
             SoundManager.PlaySFX(_musicLoaded);
             _isPlaying = true;
         }

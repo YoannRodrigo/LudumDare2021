@@ -25,6 +25,7 @@ public class ConsoleController : MonoBehaviour
     //Inputs
     public void OnConsole(){
         if(!consoleLock){
+            SoundManager.PlaySFX("Open_Console");
             bool phase = !ConsolePanel.activeSelf;
             consoleLock = true;
 
