@@ -28,6 +28,7 @@ public class WebSiteManager : MonoBehaviour
     [SerializeField] private Sprite inactiveTab;
     [SerializeField] private ScrollBarController scrollBarController;
     [SerializeField] private PostFeed _feed;
+    [SerializeField] private PostFeed _katakombsFeed;
 
     public float ScrollDelay;
     public bool HasObjectViewerOpen;
@@ -63,14 +64,12 @@ public class WebSiteManager : MonoBehaviour
         _feed.UpdateFeed(this, () =>
          {
              float webSiteHeight = currentWebSite.GetComponent<RectTransform>().rect.height;
-             if (lastId == 0)
+             scrollLength = lastId switch
              {
-                 scrollLength = Mathf.Min(webSiteHeight, _feed.FeedSize - _feed.FeedStartHeight);
-             }
-             else
-             {
-                 scrollLength = webSiteHeight;
-             }
+                 0 => Mathf.Min(webSiteHeight, _feed.FeedSize - _feed.FeedStartHeight),
+                 4 => Mathf.Min(webSiteHeight, _katakombsFeed.FeedSize - _katakombsFeed.FeedStartHeight),
+                 _ => webSiteHeight
+             };
              callback?.Invoke();
          });
     }
