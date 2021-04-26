@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Unlock(EchoShop.exe)
   m_EditorClassIdentifier: 
   Command: Unlock(EchoShop.exe)
-  Response: You went deeper...
+  Response: Are you really sure ?
   ResponseColor: {r: 1, g: 0.8254049, b: 0.5411765, a: 1}
   CallbackEvent:
     m_PersistentCalls:
