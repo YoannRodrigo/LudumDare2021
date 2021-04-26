@@ -2367,6 +2367,10 @@ PrefabInstance:
       propertyPath: _post
       value: 
       objectReference: {fileID: 589678653}
+    - target: {fileID: 6123350620838842098, guid: 5224bc1cf9c4e6d4090ca377ed3d0c59, type: 3}
+      propertyPath: _post
+      value: 
+      objectReference: {fileID: 589678653}
     - target: {fileID: 6123350621052866203, guid: 5224bc1cf9c4e6d4090ca377ed3d0c59, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -14425,6 +14429,7 @@ MonoBehaviour:
   _feed: {fileID: 1210562916}
   ScrollDelay: 0.1
   HasObjectViewerOpen: 0
+  scrollLength: 0
 --- !u!114 &1193033752
 MonoBehaviour:
   m_ObjectHideFlags: 0
