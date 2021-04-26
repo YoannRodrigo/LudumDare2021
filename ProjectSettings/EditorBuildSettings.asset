@@ -11,4 +11,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CYRIL/CYRIL - object viewer.unity
     guid: 84c705848e7d236448b9d80486626c36
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 52cbe5fd057088248a8a7b9ecb560690, type: 2}
