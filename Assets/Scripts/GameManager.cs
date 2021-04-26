@@ -45,6 +45,6 @@ public class GameManager : MonoBehaviour
             currentSequence.gameObject.SetActive(true);
         }
         hintManager.CleanHintZone();
-        hintManager.GetCurrentHint(currentSequenceID);
+        hintManager.GetCurrentHint(currentSequenceID+1);
     }
 }

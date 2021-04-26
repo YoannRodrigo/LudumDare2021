@@ -13,6 +13,7 @@ public class Sequence4 : Sequence
     {
         [SerializeField] private List<Button> buttonSequences;
         [SerializeField] private List<Button> otherButtons;
+        [SerializeField] private List<Image> sequenceImage;
         [SerializeField] private List<bool> buttonPressed = new List<bool>();
         private List<UnityAction> delegates = new List<UnityAction>();
         private int lastIdBool;
@@ -47,6 +48,7 @@ public class Sequence4 : Sequence
                 }
                 else
                 {
+                    sequenceImage[i].color = Color.white;
                     buttonPressed[i] = true;
                 }
             }
@@ -58,6 +60,7 @@ public class Sequence4 : Sequence
             for(int i = 0; i < buttonPressed.Count; i++)
             {
                 buttonPressed[i] = false;
+                sequenceImage[i].color = Color.black;
             }
         }
 
@@ -116,21 +119,11 @@ public class Sequence4 : Sequence
    
     
     public StepSimon step1;
-    public StepSimon step2;
-    public StepSimon step3;
-    public StepSimon step4;
-    public StepSimon step5;
-    public StepSimon step6;
     [SerializeField] private List<GameObject> postToUnlock;
 
     protected override void Start()
     {
         steps.Add(step1);
-        steps.Add(step2);
-        steps.Add(step3);
-        steps.Add(step4);
-        steps.Add(step5);
-        steps.Add(step6);
         base.Start();
     }
 

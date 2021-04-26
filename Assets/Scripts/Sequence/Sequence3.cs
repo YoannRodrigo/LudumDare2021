@@ -71,12 +71,10 @@ public class Sequence3 : Sequence
         }
     }
 
-    public Step1 step1;
     public Step2 step2;
 
     protected override void Start()
     {
-        steps.Add(step1);
         steps.Add(step2);
         base.Start();
     }

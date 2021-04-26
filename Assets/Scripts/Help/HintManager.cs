@@ -12,6 +12,7 @@ public class HintManager : MonoBehaviour
     [SerializeField] private RectTransform hintZone;
     [SerializeField] private RectTransform fullTargetTransform;
     [SerializeField] private RectTransform reduceTargetTransform;
+    [SerializeField] private GameObject notif;
     
     private int currentZone;
     [SerializeField] private Hint currentHint;
@@ -27,6 +28,8 @@ public class HintManager : MonoBehaviour
         if (currentZone < textZone.Count)
         {
             string textToAdd = currentHint.GetNextText();
+            SoundManager.PlaySFX("New_Message");
+            notif.SetActive(true);
             textZone[currentZone].transform.parent.gameObject.SetActive(true);
             textZone[currentZone].text = textToAdd;
             currentZone++;
@@ -35,10 +38,19 @@ public class HintManager : MonoBehaviour
 
     public void CleanHintZone()
     {
+        currentZone = 0;
         foreach (TextMeshProUGUI textMeshProUGUI in textZone)
         {
             textMeshProUGUI.transform.parent.gameObject.SetActive(false);
             textMeshProUGUI.text = "";
+        }
+    }
+
+    private void Update()
+    {
+        if (isFull)
+        {
+            notif.SetActive(false);
         }
     }
 

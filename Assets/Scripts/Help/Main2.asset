@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idSequence: 3
   websiteID: 0
-  hintsTexts: []
+  hintsTexts:
+  - How we did just unlock more Pweets?We should dig more,it's getting weirder
+  - It looks like those Pweets have been shuffled, maybe with the red letters
+  - Isn't it clear? You need to write it up in the command line

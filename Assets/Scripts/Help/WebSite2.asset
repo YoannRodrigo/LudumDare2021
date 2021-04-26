@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idSequence: 4
   websiteID: 2
-  hintsTexts: []
+  hintsTexts:
+  - A lot of people have been ordering from this website, as often as those disparitions
+  - Why should we order that much stuff?
+  - Maybe you should click on items in the right order ?

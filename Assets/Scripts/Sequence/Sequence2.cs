@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using post;
 using UnityEngine;
 
@@ -54,6 +55,7 @@ public class Sequence2 : Sequence
     public class Step4 : Step
     {
        public ConsoleCommand consoleCommand;
+       [SerializeField] private List<Post> postToUnlock;
        private bool isCommandEnter;
 
        public override void Start()
@@ -69,11 +71,14 @@ public class Sequence2 : Sequence
              isCommandEnter = true;
           }
        }
-       
        public override void Update()
        {
           if (isCommandEnter)
           {
+             foreach (Post post in postToUnlock)
+             {
+                post.ActivatePost();
+             }
              consoleCommand.CallbackEvent.RemoveListener(CommandEnter);
              ValidateStep();
           }
