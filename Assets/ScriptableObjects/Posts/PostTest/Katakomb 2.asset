@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b15a2c0fd1cde264fb93070a420a9930, type: 3}
+  m_Name: Katakomb 2
+  m_EditorClassIdentifier: 
+  Avatar: {fileID: 21300000, guid: 54c80d30ce3bd6246b21d485216dd392, type: 3}
+  Username: Obvious_F4n
+  Content:
+    Text: I feel lost in the Void, I have no escape. Katakombs is my only savior.
+    Image: {fileID: 0}
+    model3D: {fileID: 0}
+  ReactionAmount: 3
+  CommentsAmount: 2021
+  RepweetAmount: 2017
+  HasPlayerReacted: 0
+  Comments: []
+  Date: 05:40
