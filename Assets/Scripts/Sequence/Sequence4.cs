@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -12,14 +13,16 @@ public class Sequence4 : Sequence
     {
         [SerializeField] private List<Button> buttonSequences;
         [SerializeField] private List<Button> otherButtons;
-        [SerializeField] private List<bool> buttonPressed;
+        [SerializeField] private List<bool> buttonPressed = new List<bool>();
         private List<UnityAction> delegates = new List<UnityAction>();
         private int lastIdBool;
+        private bool buttonCanUpdate;
         public override void Start()
         {
             base.Start();
             for(int i = 0; i < buttonSequences.Count; i++)
             {
+                buttonPressed.Add(false);
                 int i1 = i;
                 void Func()
                 {
@@ -36,7 +39,17 @@ public class Sequence4 : Sequence
 
         private void ActivateButton(int i)
         {
-            buttonPressed[i] = true;
+            if(buttonCanUpdate)
+            {
+                if (buttonPressed[i])
+                {
+                    FailSequence();
+                }
+                else
+                {
+                    buttonPressed[i] = true;
+                }
+            }
         }
 
         private void FailSequence()
@@ -50,14 +63,24 @@ public class Sequence4 : Sequence
 
         private bool ValidateSequence()
         {
-            int nbPressed = buttonPressed.FindAll(b => true).Count;
-            int lastId = buttonPressed.FindLastIndex(b => true);
+            int nbPressed = buttonPressed.Count(press => press);
+            int lastId = 0;
+            
+            
             if (nbPressed == buttonPressed.Count)
             {
                 return true;
             }
 
-            if (lastIdBool - lastId > 1)
+            for (int i = 0; i < buttonPressed.Count; i++)
+            {
+                if (buttonPressed[i])
+                {
+                    lastId = i;
+                }
+            }
+
+            if (lastId - lastIdBool > 1)
             {
                 FailSequence();
             }
@@ -73,8 +96,10 @@ public class Sequence4 : Sequence
         public override void Update()
         {
             base.Update();
+            buttonCanUpdate = true;
             if (ValidateSequence())
             {
+                Debug.Log("Validate Simon " + buttonSequences.Count);
                 ValidateStep();
                 for(int i = 0; i < buttonSequences.Count; i++)
                 {

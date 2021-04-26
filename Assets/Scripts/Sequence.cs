@@ -20,7 +20,6 @@ public class Sequence : MonoBehaviour
         
         protected void ValidateStep()
         {
-            Debug.Log("ValidateStep" + stepId);
             isValidate = true;
         }
 
