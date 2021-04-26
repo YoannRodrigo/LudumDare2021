@@ -11,7 +11,7 @@ namespace post
     {
         [SerializeField] private GameObject[] _normalPost;
         [SerializeField] private GameObject[] _glitchedPost;
-        [SerializeField, Range(0, 1)] private float _detectRange;
+        [SerializeField, Range(0, 100)] private float _detectRange;
         [SerializeField] private PostData _infosGlitch;
         [SerializeField] private GameObject _containerMediaGlitch;
         [SerializeField] private Image _avatarGlitch;
@@ -86,7 +86,7 @@ namespace post
         }
         private void Glitch(float scrollPercent)
         {
-            if (scrollPercent >= .66f - _detectRange && scrollPercent <= .66f + _detectRange)
+            if (scrollPercent >= 1444f - _detectRange && scrollPercent <= 1444f + _detectRange)
             {
                 foreach (GameObject container in _normalPost)
                 {
