@@ -2919,6 +2919,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1210562916}
     - target: {fileID: 6123350620101344487, guid: 5224bc1cf9c4e6d4090ca377ed3d0c59, type: 3}
+      propertyPath: _detectRange
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6123350620101344487, guid: 5224bc1cf9c4e6d4090ca377ed3d0c59, type: 3}
       propertyPath: _websiteManager
       value: 
       objectReference: {fileID: 1193033751}
@@ -7428,7 +7432,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6123350620101344487, guid: 5224bc1cf9c4e6d4090ca377ed3d0c59, type: 3}
   m_PrefabInstance: {fileID: 262439163}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 991462409}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1361acb1fc1c79e45b40c8aaecfaeaa9, type: 3}
@@ -15589,6 +15593,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 986376062}
   m_CullTransparentMesh: 1
+--- !u!1 &991462409 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6123350620101344481, guid: 5224bc1cf9c4e6d4090ca377ed3d0c59, type: 3}
+  m_PrefabInstance: {fileID: 262439163}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &991462410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991462409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c0a96137174f314581ad85a8f136805, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Posts:
+  - {fileID: 11400000, guid: f8db0c2df79f20c4a85e92cd2f8c261b, type: 2}
+  - {fileID: 11400000, guid: d077828e01467844eb9e71d9754f1018, type: 2}
+  - {fileID: 11400000, guid: e6066d2c70d68d34f9bb75af4c3f6717, type: 2}
+  - {fileID: 11400000, guid: 28209769b3658324b8d2b18bc89896c1, type: 2}
+  - {fileID: 11400000, guid: d5664eb9b9874164d9311c57421447a0, type: 2}
+  - {fileID: 11400000, guid: 8f0aa9c99c47eb9489e3c978f95af8a9, type: 2}
+  - {fileID: 11400000, guid: d3ef80214b1326649848d86f47eace54, type: 2}
+  - {fileID: 11400000, guid: 3c2995aec61429c4a990355521a0cd23, type: 2}
+  GameManager: {fileID: 1329609669}
 --- !u!1 &1004446649
 GameObject:
   m_ObjectHideFlags: 0

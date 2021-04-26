@@ -127,5 +127,10 @@ namespace post
             }
         }
 
+        public void UpdateGlitchedInfos(post.PostData _infos){
+            this._infosGlitch = _infos;
+            this.FillGlitchPostWithInfos();
+        }
+
     }
 }

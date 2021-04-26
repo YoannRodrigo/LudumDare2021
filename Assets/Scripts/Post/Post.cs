@@ -39,7 +39,6 @@ namespace post
             return isModelOpen;
         }
 
-
         protected virtual void OnValidate()
         {
             FillPostWithInfos();
@@ -118,6 +117,10 @@ namespace post
         public void ActivatePost()
         {
             gameObject.SetActive(true);
+        }
+
+        public void SetInfos(post.PostData _infos){
+            this._infos = _infos;
         }
     }
 }

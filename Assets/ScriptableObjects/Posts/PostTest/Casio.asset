@@ -23,6 +23,6 @@ MonoBehaviour:
   ReactionAmount: 0
   CommentsAmount: 0
   RepweetAmount: 1
-  HasPlayerReacted: 0
+  HasPlayerReacted: 1
   Comments: []
   Date: 21:12

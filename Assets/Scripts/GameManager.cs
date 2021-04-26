@@ -50,4 +50,8 @@ public class GameManager : MonoBehaviour
         hintManager.CleanHintZone();
         hintManager.GetCurrentHint(currentSequenceID+1);
     }
+
+    public int GetCurrentSequenceID(){
+        return this.currentSequenceID;
+    }
 }
