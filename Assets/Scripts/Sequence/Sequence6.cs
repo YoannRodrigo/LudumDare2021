@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -39,7 +40,7 @@ public class Sequence6 : Sequence
     
     [SerializeField] private Step1 step1;
     [SerializeField] private Step1 step2;
-
+    [SerializeField] private List<GameObject> postToUnlock;
     protected override void Start()
     {
         steps.Add(step1);
@@ -47,5 +48,12 @@ public class Sequence6 : Sequence
         base.Start();
     }
     
-    
+    protected override void ValidateSequence()
+    {
+        foreach (GameObject post in postToUnlock)
+        {
+            post.SetActive(true);
+        }
+        base.ValidateSequence();
+    }
 }

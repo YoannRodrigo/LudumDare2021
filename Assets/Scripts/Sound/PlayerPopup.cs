@@ -26,6 +26,7 @@ public class PlayerPopup : MonoBehaviour
         _isOpen = true;
         GetComponent<RectTransform>().DOAnchorPosY(basePos.y + _displacementAmount.y, 1).SetEase(Ease.OutCubic);
         _musicLoaded = songToPlay;
+        print(_musicLoaded);
     }
 
     public void ClickOnClose()
@@ -47,6 +48,7 @@ public class PlayerPopup : MonoBehaviour
         }
         else
         {
+            print(_musicLoaded);
             SoundManager.PlaySFX(_musicLoaded);
             _isPlaying = true;
         }
