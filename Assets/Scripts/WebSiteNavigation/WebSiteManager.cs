@@ -65,7 +65,7 @@ public class WebSiteManager : MonoBehaviour
              float webSiteHeight = currentWebSite.GetComponent<RectTransform>().rect.height;
              if (lastId == 0)
              {
-                 scrollLength = Mathf.Min(webSiteHeight, _feed.FeedSize - _feed.FeedStartHeight);
+                 scrollLength = Mathf.Min(webSiteHeight, _feed.FeedSize - Mathf.Abs(_feed.FeedStartHeight));
              }
              else
              {
@@ -161,7 +161,7 @@ public class WebSiteManager : MonoBehaviour
             float cameraViewHeight = GameObject.FindWithTag("MainCamera").GetComponent<Camera>().pixelHeight;
             float targetValue = Mathf.Clamp(currentWebSite.GetComponent<RectTransform>().anchoredPosition.y - scrollValue, 0, scrollLength - cameraViewHeight);
             targetValue = Mathf.Max(targetValue, 0);
-            ScrollPercent = targetValue / (scrollLength - cameraViewHeight);
+            ScrollPercent = targetValue;
             Vector3 targetPosition = new Vector3(currentWebSite.GetComponent<RectTransform>().anchoredPosition.x, targetValue, 0);
             if (tween == null || !tween.IsActive() || tween.IsComplete())
             {
