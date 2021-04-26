@@ -102,7 +102,6 @@ public class Sequence4 : Sequence
             buttonCanUpdate = true;
             if (ValidateSequence())
             {
-                Debug.Log("Validate Simon " + buttonSequences.Count);
                 ValidateStep();
                 for(int i = 0; i < buttonSequences.Count; i++)
                 {
