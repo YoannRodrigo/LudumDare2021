@@ -9,7 +9,6 @@ public class Sequence8 : Sequence
     public class Step1 : Step
     {
         public ConsoleCommand consoleCommand;
-        [SerializeField] private List<Post> postToUnlock;
         private bool isCommandEnter;
 
         public override void Start()
