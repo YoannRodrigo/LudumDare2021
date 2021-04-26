@@ -22,10 +22,12 @@ namespace post
         private IEnumerator Layout()
         {
             _layoutGroup.enabled = false;
-            yield return null;
+            yield return new WaitForEndOfFrame();
             _layoutGroup.enabled = true;
-            yield return null;
+            yield return new WaitForEndOfFrame();
             _layoutGroup.enabled = false;
+            yield return new WaitForEndOfFrame();
+            _layoutGroup.enabled = true;
         }
 
         public void OpenModelViewer(GameObject model3D)
