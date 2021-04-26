@@ -121,6 +121,7 @@ public class Sequence4 : Sequence
     public StepSimon step4;
     public StepSimon step5;
     public StepSimon step6;
+    [SerializeField] private List<GameObject> postToUnlock;
 
     protected override void Start()
     {
@@ -131,5 +132,14 @@ public class Sequence4 : Sequence
         steps.Add(step5);
         steps.Add(step6);
         base.Start();
+    }
+
+    protected override void ValidateSequence()
+    {
+        foreach (GameObject post in postToUnlock)
+        {
+            post.SetActive(true);
+        }
+        base.ValidateSequence();
     }
 }
