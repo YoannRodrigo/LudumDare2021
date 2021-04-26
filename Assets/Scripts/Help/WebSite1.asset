@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idSequence: 2
   websiteID: 1
-  hintsTexts: []
+  hintsTexts:
+  - This website is a goldmine. Pretty sure we could find a hint about those cases.
+  - Always scroll to max down on this website, F and 1 ? well, Guess you got it.
+  - Ads, ads everywhere, is there any cool infos?
