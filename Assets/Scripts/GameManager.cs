@@ -10,22 +10,24 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private List<Sequence> allSequence;
     private Sequence currentSequence;
-    private const float TIME_BEFORE_NEXT_HINT = 1;
+    private const float TIME_BEFORE_FIRST_MESSAGE = 3;
+    private const float TIME_BEFORE_NEXT_HINT = 100;
+    private float nextTimer;
 
     private void Start()
     {
         hintManager.GetCurrentHint(currentSequenceID+1);
         currentSequence = allSequence[0];
-        //currentSequence.OnSequenceEnd().AddListener(OnNextSequence);
+        nextTimer = TIME_BEFORE_FIRST_MESSAGE;
     }
 
     private void Update()
     {
         timeSinceLastHint += Time.deltaTime;
-        if (timeSinceLastHint > TIME_BEFORE_NEXT_HINT)
+        if (timeSinceLastHint > nextTimer)
         {
-            timeSinceLastHint = 0;
             ShowPlayerNeedAHint();
+            nextTimer += TIME_BEFORE_NEXT_HINT;
         }
     }
 
@@ -36,6 +38,7 @@ public class GameManager : MonoBehaviour
 
     public void OnNextSequence()
     {
+        nextTimer = TIME_BEFORE_FIRST_MESSAGE;
         timeSinceLastHint = 0;
         currentSequence.gameObject.SetActive(false);
         currentSequenceID++;
